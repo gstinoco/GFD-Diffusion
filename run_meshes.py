@@ -28,10 +28,10 @@ nu = 0.2
 nu = 0.2
 
 # Names of the regions
-regions = ['CAB']#,'CUA','CUI','DOW','ENG','GIB','HAB','MIC','PAT','ZIR']
+regions = ['CAB','CUA','CUI','DOW','ENG','GIB','HAB','MIC','PAT','ZIR']
 
 # Sizes of the clouds
-sizes = ['21']#, '41', '81']
+sizes = ['21', '41', '81']
 
 for reg in regions:
     regi = reg
