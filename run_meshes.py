@@ -20,6 +20,7 @@ import Scripts.Errors as Errors
 import Scripts.Graph as Graph
 import Diffusion_2D
 
+
 # Diffusion coefficient
 nu = 0.2
 
@@ -27,23 +28,23 @@ nu = 0.2
 nu = 0.2
 
 # Names of the regions
-regions = ['CAB','CUA','CUI','DOW','ENG','GIB','HAB','MIC','PAT','ZIR']
+regions = ['CAB']#,'CUA','CUI','DOW','ENG','GIB','HAB','MIC','PAT','ZIR']
 
 # Sizes of the clouds
-sizes = ['1', '2', '3']
+sizes = ['21']#, '41', '81']
 
 for reg in regions:
     regi = reg
 
     for me in sizes:
-        cloud = me
+        mesh = me
 
         # Number of Time Steps
-        if cloud == 1:
-            t = 1000
-        elif cloud == 2:
+        if mesh == 21:
+            t = 100
+        elif mesh == 41:
             t = 2000
-        elif cloud == 3:
+        elif mesh == 81:
             t = 4000
         else:
             t = 10000
@@ -57,19 +58,17 @@ for reg in regions:
             return fun
 
         # All data is loaded from the file
-        mat = loadmat('Data/Clouds/' + regi + '_' + cloud + '.mat')
-        nom = 'Results/Explicit/Clouds/' + regi + '_' + cloud + '_QME.png'
-        nov = 'Results/Explicit/Clouds/' + regi + '_' + cloud + '.mp4'
+        mat = loadmat('Data/Meshes/' + regi + mesh + '.mat')
+        nom = 'Results/Explicit/Meshes/' + regi + mesh + '_QME.png'
+        nov = 'Results/Explicit/Meshes/' + regi + mesh + '.mp4'
 
         # Node data is saved
-        p   = mat['p']
-        tt  = mat['tt']
-        if tt.min() == 1:
-            tt -= 1
+        x  = mat['x']
+        y  = mat['y']
 
-        # Poisson 2D computed in an unstructured cloud of points
-        u_ap, u_ex, vec = Diffusion_2D.Cloud(p, fDIF, nu, t)
-        er = Errors.Cloud_Transient(p, vec, u_ap, u_ex)
-        print('The maximum mean square error in the unstructured cloud of points', regi, 'with size', cloud, 'is: ', er.max())
-        Graph.Error_sav(er,nom)
-        Graph.Cloud_Transient_sav(p, tt, u_ap, u_ex, nov)
+        # Poisson 2D computed in a logically rectangular mesh
+        u_ap, u_ex = Diffusion_2D.Mesh(x, y, fDIF, nu, t)
+        er = Errors.Mesh_Transient(x, y, u_ap, u_ex)
+        print('The maximum mean square error in the mesh', regi, 'with', mesh, 'points per side is: ', er.max())
+        Graph.Error_sav(er, nom)
+        Graph.Mesh_Transient_sav(x, y, u_ap, u_ex, nov)

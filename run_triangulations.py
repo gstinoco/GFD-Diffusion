@@ -20,24 +20,13 @@ import Scripts.Errors as Errors
 import Scripts.Graph as Graph
 import Diffusion_2D
 
-# Number of Time Steps
-t  = 10000
-
 # Diffusion coefficient
 nu = 0.2
 
-# Boundary conditions
-# The boundary conditions are defined as
-#   f = e^{-2*\pi^2vt}\cos(\pi x)cos(\pi y)
-
-def fDIF(x, y, t, v):
-    fun = np.exp(-2*np.pi**2*v*t)*np.cos(np.pi*x)*np.cos(np.pi*y)
-    return fun
-
-# Region data is loaded.
-# Triangulation to work in.
-
+# Names of the regions
 regions = ['CAB','CUA','CUI','DOW','ENG','GIB','HAB','MIC','PAT','ZIR']
+
+# Sizes of the triangulations
 sizes = ['1', '2', '3']
 
 for reg in regions:
@@ -46,9 +35,28 @@ for reg in regions:
     for me in sizes:
         cloud = me
 
+        # Number of Time Steps
+        if cloud == 1:
+            t = 1000
+        elif cloud == 2:
+            t = 2000
+        elif cloud == 3:
+            t = 4000
+        else:
+            t = 10000
+
+        # Boundary conditions
+        # The boundary conditions are defined as
+        #   f = e^{-2*\pi^2vt}\cos(\pi x)cos(\pi y)
+
+        def fDIF(x, y, t, v):
+            fun = np.exp(-2*np.pi**2*v*t)*np.cos(np.pi*x)*np.cos(np.pi*y)
+            return fun
+
         # All data is loaded from the file
         mat  = loadmat('Data/Clouds/' + region + '_' + cloud + '.mat')
         nom = 'Results/Explicit/Triangulations/' + region + '_' + cloud + '_QME.png'
+        nov = 'Results/Explicit/Triangulations/' + region + '_' + cloud + '.mp4'
 
         # Node data is saved
         p   = mat['p']
@@ -61,5 +69,4 @@ for reg in regions:
         er = Errors.Cloud_Transient(p, vec, u_ap, u_ex)
         print('The maximum mean square error in the triangulation', region, 'with size', cloud, 'is: ', er.max())
         Graph.Error_sav(er,nom)
-        #Graph.Error(er)
-        #Graph.Cloud_Transient(p, tt, u_ap, u_ex)
+        Graph.Cloud_Transient_sav(p, tt, u_ap, u_ex, nov)
