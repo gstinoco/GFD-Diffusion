@@ -48,7 +48,7 @@ for reg in regions:
 
         # All data is loaded from the file
         mat  = loadmat('Data/Clouds/' + region + '_' + cloud + '.mat')
-        nomt = 'Results/Explicit/Triangulations/' + region + '_' + cloud + '.png'
+        nom = 'Results/Explicit/Triangulations/' + region + '_' + cloud + '_QME.png'
 
         # Node data is saved
         p   = mat['p']
@@ -60,5 +60,6 @@ for reg in regions:
         u_ap, u_ex, vec = Diffusion_2D.Triangulation(p, tt, fDIF, nu, t)
         er = Errors.Cloud_Transient(p, vec, u_ap, u_ex)
         print('The maximum mean square error in the triangulation', region, 'with size', cloud, 'is: ', er.max())
+        Graph.Error_sav(er,nom)
         #Graph.Error(er)
         #Graph.Cloud_Transient(p, tt, u_ap, u_ex)
