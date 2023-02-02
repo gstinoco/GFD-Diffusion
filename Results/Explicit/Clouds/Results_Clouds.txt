@@ -1,49 +1,49 @@
 CAB:
-    The maximum mean square error in the unstructured cloud of points CAB with size 1 is:  3.19704098265122e-05
+    The maximum mean square error in the unstructured cloud of points CAB with size 1 is:  3.1704842623648373e-05
     The maximum mean square error in the unstructured cloud of points CAB with size 2 is:  2.844623924332352e-06
-    The maximum mean square error in the unstructured cloud of points CAB with size 3 is:  3.2927754596083567e-07
+    The maximum mean square error in the unstructured cloud of points CAB with size 3 is:  2.427343938086445e-07
 
 CUA:
-    The maximum mean square error in the unstructured cloud of points CUA with size 1 is:  7.167890714101031e-05
+    The maximum mean square error in the unstructured cloud of points CUA with size 1 is:  6.713481429198063e-05
     The maximum mean square error in the unstructured cloud of points CUA with size 2 is:  7.40353006673863e-06
-    The maximum mean square error in the unstructured cloud of points CUA with size 3 is:  4.673411074801302e-07
+    The maximum mean square error in the unstructured cloud of points CUA with size 3 is:  6.072848510871358e-07
 
 CUI:
-    The maximum mean square error in the unstructured cloud of points CUI with size 1 is:  0.00016012277905011498
+    The maximum mean square error in the unstructured cloud of points CUI with size 1 is:  0.00015688609241614192
     The maximum mean square error in the unstructured cloud of points CUI with size 2 is:  1.8387459153257182e-05
-    The maximum mean square error in the unstructured cloud of points CUI with size 3 is:  1.6207837218098242e-06
+    The maximum mean square error in the unstructured cloud of points CUI with size 3 is:  1.706226894492152e-06
 
 DOW:
-    The maximum mean square error in the unstructured cloud of points DOW with size 1 is:  5.2283781240952715e-05
+    The maximum mean square error in the unstructured cloud of points DOW with size 1 is:  5.1674206916188184e-05
     The maximum mean square error in the unstructured cloud of points DOW with size 2 is:  4.102316487527805e-06
-    The maximum mean square error in the unstructured cloud of points DOW with size 3 is:  4.491879510874361e-07
+    The maximum mean square error in the unstructured cloud of points DOW with size 3 is:  4.4504251057489536e-07
 
 ENG:
-    The maximum mean square error in the unstructured cloud of points ENG with size 1 is:  7.418275498622395e-05
+    The maximum mean square error in the unstructured cloud of points ENG with size 1 is:  7.352211705628124e-05
     The maximum mean square error in the unstructured cloud of points ENG with size 2 is:  2.7486022824637173e-05
-    The maximum mean square error in the unstructured cloud of points ENG with size 3 is:  2.851841275678557e-06
+    The maximum mean square error in the unstructured cloud of points ENG with size 3 is:  3.142114830644571e-06
 
 GIB:
-    The maximum mean square error in the unstructured cloud of points GIB with size 1 is:  0.00025596196826953733
+    The maximum mean square error in the unstructured cloud of points GIB with size 1 is:  0.0002549974530950539
     The maximum mean square error in the unstructured cloud of points GIB with size 2 is:  2.4148469443466874e-05
-    The maximum mean square error in the unstructured cloud of points GIB with size 3 is:  1.9900863125215005e-06
+    The maximum mean square error in the unstructured cloud of points GIB with size 3 is:  2.1267159030475326e-06
 
 HAB:
-    The maximum mean square error in the unstructured cloud of points HAB with size 1 is:  0.0002843240247305412
+    The maximum mean square error in the unstructured cloud of points HAB with size 1 is:  0.0002829461406293114
     The maximum mean square error in the unstructured cloud of points HAB with size 2 is:  2.5326309986400004e-05
-    The maximum mean square error in the unstructured cloud of points HAB with size 3 is:  3.4289941578185595e-06
+    The maximum mean square error in the unstructured cloud of points HAB with size 3 is:  3.513394026579779e-06
 
 MIC:
-    The maximum mean square error in the unstructured cloud of points MIC with size 1 is:  0.00029895833429112873
+    The maximum mean square error in the unstructured cloud of points MIC with size 1 is:  0.00029714190643430935
     The maximum mean square error in the unstructured cloud of points MIC with size 2 is:  4.257098351438894e-05
-    The maximum mean square error in the unstructured cloud of points MIC with size 3 is:  6.188565894026123e-06
+    The maximum mean square error in the unstructured cloud of points MIC with size 3 is:  6.38663345367165e-06
 
 PAT:
-    The maximum mean square error in the unstructured cloud of points PAT with size 1 is:  0.00010878068570405949
+    The maximum mean square error in the unstructured cloud of points PAT with size 1 is:  0.00010859264844980635
     The maximum mean square error in the unstructured cloud of points PAT with size 2 is:  2.484377069888905e-05
-    The maximum mean square error in the unstructured cloud of points PAT with size 3 is:  2.7615197860343312e-06
+    The maximum mean square error in the unstructured cloud of points PAT with size 3 is:  2.7305711554733e-06
 
 ZIR:
-    The maximum mean square error in the unstructured cloud of points ZIR with size 1 is:  0.00010726870610296785
+    The maximum mean square error in the unstructured cloud of points ZIR with size 1 is:  0.00010587063957100935
     The maximum mean square error in the unstructured cloud of points ZIR with size 2 is:  1.810520526238187e-05
-    The maximum mean square error in the unstructured cloud of points ZIR with size 3 is:  1.641443709893141e-06
+    The maximum mean square error in the unstructured cloud of points ZIR with size 3 is:  1.7025061430941153e-06
