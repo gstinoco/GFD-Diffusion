@@ -23,9 +23,6 @@ import Diffusion_2D
 # Diffusion coefficient
 nu = 0.2
 
-# Diffusion coefficient
-nu = 0.2
-
 # Names of the regions
 regions = ['CAB','CUA','CUI','DOW','ENG','GIB','HAB','MIC','PAT','ZIR']
 
@@ -39,12 +36,12 @@ for reg in regions:
         cloud = me
 
         # Number of Time Steps
-        if cloud == 1:
-            t = 1000
-        elif cloud == 2:
-            t = 2000
-        elif cloud == 3:
-            t = 4000
+        if cloud == '1':
+            t = 5000
+        elif cloud == '2':
+            t = 10000
+        elif cloud == '3':
+            t = 20000
         else:
             t = 10000
 

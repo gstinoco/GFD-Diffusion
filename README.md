@@ -1,7 +1,7 @@
-# GFD-Poisson
-Generalized Finite Differences Methods for numerically solve Poisson Equation on highly irregular regions.
+# GFD-Diffusion
+Generalized Finite Differences Methods for numerically solve Diffusion Equation on highly irregular regions.
 
-All the codes are distributed under MIT License on [GitHub](https://github.com/gstinoco/GFD-Poisson) and are free to use, modify, and distribute giving the proper copyright notice.
+All the codes are distributed under MIT License on [GitHub](https://github.com/gstinoco/GFD-Diffusion) and are free to use, modify, and distribute giving the proper copyright notice.
 
 ![Approximate and Theoretical solutions of the problem on ENG region](/Results/Clouds/ENG_3.png)
 
