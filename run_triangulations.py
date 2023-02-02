@@ -36,12 +36,12 @@ for reg in regions:
         cloud = me
 
         # Number of Time Steps
-        if cloud == 1:
-            t = 1000
-        elif cloud == 2:
-            t = 2000
-        elif cloud == 3:
-            t = 4000
+        if cloud == '1':
+            t = 5000
+        elif cloud == '2':
+            t = 10000
+        elif cloud == '3':
+            t = 20000
         else:
             t = 10000
 

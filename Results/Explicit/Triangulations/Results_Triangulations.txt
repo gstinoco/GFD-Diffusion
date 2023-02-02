@@ -1,0 +1,50 @@
+CAB:
+    The maximum mean square error in the triangulation CAB with size 1 is:  1.0677701053223382e-05
+    The maximum mean square error in the triangulation CAB with size 2 is:  1.470884052526493e-06
+    The maximum mean square error in the triangulation CAB with size 3 is:  1.4575376257628673e-07
+
+CUA:
+    The maximum mean square error in the triangulation CUA with size 1 is:  5.779528701677447e-05
+    The maximum mean square error in the triangulation CUA with size 2 is:  5.676743454861929e-06
+    The maximum mean square error in the triangulation CUA with size 3 is:  4.471728347894591e-07
+
+CUI:
+    The maximum mean square error in the triangulation CUI with size 1 is:  9.206835049779344e-05
+    The maximum mean square error in the triangulation CUI with size 2 is:  9.068530541920775e-06
+    The maximum mean square error in the triangulation CUI with size 3 is:  1.1346548814924716e-06
+
+
+DOW:
+    The maximum mean square error in the triangulation DOW with size 1 is:  1.353053425030813e-05
+    The maximum mean square error in the triangulation DOW with size 2 is:  1.0521325461429296e-06
+    The maximum mean square error in the triangulation DOW with size 3 is:  1.1973351705855976e-07
+
+ENG:
+    The maximum mean square error in the triangulation ENG with size 1 is:  4.677598505115662e-05
+    The maximum mean square error in the triangulation ENG with size 2 is:  8.681278505422312e-06
+    The maximum mean square error in the triangulation ENG with size 3 is:  9.155334838342285e-07
+
+GIB:
+    The maximum mean square error in the triangulation GIB with size 1 is:  0.00011898889012097349
+    The maximum mean square error in the triangulation GIB with size 2 is:  1.7823559954972756e-05
+    The maximum mean square error in the triangulation GIB with size 3 is:  1.5633426880323996e-06
+
+HAB:
+    The maximum mean square error in the triangulation HAB with size 1 is:  9.009674054023578e-05
+    The maximum mean square error in the triangulation HAB with size 2 is:  1.4639551527940254e-05
+    The maximum mean square error in the triangulation HAB with size 3 is:  1.6790451148838976e-06
+
+MIC:
+    The maximum mean square error in the triangulation MIC with size 1 is:  0.0001653872546884692
+    The maximum mean square error in the triangulation MIC with size 2 is:  2.7291068121989007e-05
+    The maximum mean square error in the triangulation MIC with size 3 is:  3.7148069090119203e-06
+
+PAT:
+    The maximum mean square error in the triangulation PAT with size 1 is:  6.0121684743470864e-05
+    The maximum mean square error in the triangulation PAT with size 2 is:  9.860625523992603e-06
+    The maximum mean square error in the triangulation PAT with size 3 is:  1.069525125580458e-06
+
+ZIR:
+    The maximum mean square error in the triangulation ZIR with size 1 is:  6.027135791606305e-05
+    The maximum mean square error in the triangulation ZIR with size 2 is:  8.534546694899803e-06
+    The maximum mean square error in the triangulation ZIR with size 3 is:  8.477559197584524e-07
