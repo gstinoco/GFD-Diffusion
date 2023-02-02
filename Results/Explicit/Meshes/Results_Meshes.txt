@@ -1,0 +1,49 @@
+CAB:
+    The maximum mean square error in the mesh CAB with 21 points per side is:  0.00016020163140774955
+    The maximum mean square error in the mesh CAB with 41 points per side is:  3.779238628369091e-05
+    The maximum mean square error in the mesh CAB with 81 points per side is:  8.230166760369906e-06
+
+CUA:
+    The maximum mean square error in the mesh CUA with 21 points per side is:  0.000779591366491713
+    The maximum mean square error in the mesh CUA with 41 points per side is:  0.00018246848985910657
+    The maximum mean square error in the mesh CUA with 81 points per side is:  3.9762786467758305e-05
+
+CUI:
+    The maximum mean square error in the mesh CUI with 21 points per side is:  0.0003964602792897612
+    The maximum mean square error in the mesh CUI with 41 points per side is:  9.247062794050032e-05
+    The maximum mean square error in the mesh CUI with 81 points per side is:  nan
+
+DOW:
+    The maximum mean square error in the mesh DOW with 21 points per side is:  0.0004232636319331103
+    The maximum mean square error in the mesh DOW with 41 points per side is:  0.00011003416559467931
+    The maximum mean square error in the mesh DOW with 81 points per side is:  nan
+
+ENG:
+    The maximum mean square error in the mesh ENG with 21 points per side is:  inf
+    The maximum mean square error in the mesh ENG with 41 points per side is:  nan
+    The maximum mean square error in the mesh ENG with 81 points per side is:  nan
+
+GIB:
+    The maximum mean square error in the mesh GIB with 21 points per side is:  0.0016911833357738284
+    The maximum mean square error in the mesh GIB with 41 points per side is:  nan
+    The maximum mean square error in the mesh GIB with 81 points per side is:  nan
+
+HAB:
+    The maximum mean square error in the mesh HAB with 21 points per side is:  1.3870163701234213
+    The maximum mean square error in the mesh HAB with 41 points per side is:  nan
+    The maximum mean square error in the mesh HAB with 81 points per side is:  nan
+
+MIC:
+    The maximum mean square error in the mesh MIC with 21 points per side is:  0.0026341115643916634
+    The maximum mean square error in the mesh MIC with 41 points per side is:  nan
+    The maximum mean square error in the mesh MIC with 81 points per side is:  nan
+
+PAT:
+    The maximum mean square error in the mesh PAT with 21 points per side is:  1.3253510565852232e+50
+    The maximum mean square error in the mesh PAT with 41 points per side is:  nan
+    The maximum mean square error in the mesh PAT with 81 points per side is:  nan
+
+ZIR:
+    The maximum mean square error in the mesh ZIR with 21 points per side is:  0.00037280718810795533
+    The maximum mean square error in the mesh ZIR with 41 points per side is:  9.019552203738616e-05
+    The maximum mean square error in the mesh ZIR with 81 points per side is:  nan
