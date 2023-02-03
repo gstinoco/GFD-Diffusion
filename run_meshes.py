@@ -41,11 +41,11 @@ for reg in regions:
 
         # Number of Time Steps
         if mesh == '21':
-            t = 5000
+            t = 500
         elif mesh == '41':
-            t = 10000
+            t = 2000
         elif mesh == '81':
-            t = 20000
+            t = 4000
         else:
             t = 10000
 
@@ -61,6 +61,7 @@ for reg in regions:
         mat = loadmat('Data/Meshes/' + regi + mesh + '.mat')
         nom = 'Results/Meshes/' + regi + mesh + '_QME.png'
         nov = 'Results/Meshes/' + regi + mesh + '.mp4'
+        nop = 'Results/Meshes/' + regi + mesh + '_'
 
         # Node data is saved
         x  = mat['x']
@@ -72,3 +73,4 @@ for reg in regions:
         print('The maximum mean square error in the mesh', regi, 'with', mesh, 'points per side is: ', er.max())
         Graph.Error_sav(er, nom)
         Graph.Mesh_Transient_sav(x, y, u_ap, u_ex, nov)
+        Graph.Mesh_Static_sav(x, y, u_ap, u_ex, nop)

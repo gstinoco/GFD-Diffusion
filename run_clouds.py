@@ -37,11 +37,11 @@ for reg in regions:
 
         # Number of Time Steps
         if cloud == '1':
-            t = 5000
+            t = 500
         elif cloud == '2':
-            t = 10000
+            t = 2000
         elif cloud == '3':
-            t = 20000
+            t = 4000
         else:
             t = 10000
 
@@ -57,6 +57,7 @@ for reg in regions:
         mat = loadmat('Data/Clouds/' + regi + '_' + cloud + '.mat')
         nom = 'Results/Clouds/' + regi + '_' + cloud + '_QME.png'
         nov = 'Results/Clouds/' + regi + '_' + cloud + '.mp4'
+        nop = 'Results/Clouds/' + regi + '_' + cloud + '_'
 
         # Node data is saved
         p   = mat['p']
@@ -70,3 +71,4 @@ for reg in regions:
         print('The maximum mean square error in the unstructured cloud of points', regi, 'with size', cloud, 'is: ', er.max())
         Graph.Error_sav(er,nom)
         Graph.Cloud_Transient_sav(p, tt, u_ap, u_ex, nov)
+        Graph.Cloud_Static_sav(p, tt, u_ap, u_ex, nop)

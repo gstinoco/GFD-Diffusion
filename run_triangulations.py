@@ -30,7 +30,7 @@ regions = ['CAB','CUA','CUI','DOW','ENG','GIB','HAB','MIC','PAT','ZIR']
 sizes = ['1', '2', '3']
 
 for reg in regions:
-    region = reg
+    regi = reg
 
     for me in sizes:
         cloud = me
@@ -38,11 +38,11 @@ for reg in regions:
 
         # Number of Time Steps
         if cloud == '1':
-            t = 5000
+            t = 500
         elif cloud == '2':
-            t = 10000
+            t = 2000
         elif cloud == '3':
-            t = 20000
+            t = 4000
         else:
             t = 10000
 
@@ -55,10 +55,10 @@ for reg in regions:
             return fun
 
         # All data is loaded from the file
-        mat  = loadmat('Data/Clouds/' + region + '_' + cloud + '.mat')
-        nom = 'Results/Triangulations/' + region + '_' + cloud + '_QME.png'
-        nov = 'Results/Triangulations/' + region + '_' + cloud + '.mp4'
-        nop = 'Results/Triangulations/' + region + '_' + cloud + '_'
+        mat  = loadmat('Data/Clouds/' + regi + '_' + cloud + '.mat')
+        nom = 'Results/Triangulations/' + regi + '_' + cloud + '_QME.png'
+        nov = 'Results/Triangulations/' + regi + '_' + cloud + '.mp4'
+        nop = 'Results/Triangulations/' + regi + '_' + cloud + '_'
 
         # Node data is saved
         p   = mat['p']
@@ -67,10 +67,10 @@ for reg in regions:
             tt -= 1
 
         # Poisson 2D computed in a triangulation
-        print('Working in the triangulation', region, 'with size', cloud)
+        print('Working in the triangulation', regi, 'with size', cloud)
         u_ap, u_ex, vec = Diffusion_2D.Triangulation(p, tt, fDIF, nu, t)
         er = Errors.Cloud_Transient(p, vec, u_ap, u_ex)
-        print('The maximum mean square error in the triangulation', region, 'with size', cloud, 'is: ', er.max())
+        print('The maximum mean square error in the triangulation', regi, 'with size', cloud, 'is: ', er.max())
         Graph.Error_sav(er,nom)
         Graph.Cloud_Transient_sav(p, tt, u_ap, u_ex, nov)
         Graph.Cloud_Static_sav(p, tt, u_ap, u_ex, nop)
