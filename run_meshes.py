@@ -59,8 +59,8 @@ for reg in regions:
 
         # All data is loaded from the file
         mat = loadmat('Data/Meshes/' + regi + mesh + '.mat')
-        nom = 'Results/Explicit/Meshes/' + regi + mesh + '_QME.png'
-        nov = 'Results/Explicit/Meshes/' + regi + mesh + '.mp4'
+        nom = 'Results/Meshes/' + regi + mesh + '_QME.png'
+        nov = 'Results/Meshes/' + regi + mesh + '.mp4'
 
         # Node data is saved
         x  = mat['x']

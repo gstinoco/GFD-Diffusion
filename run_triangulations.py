@@ -34,6 +34,7 @@ for reg in regions:
 
     for me in sizes:
         cloud = me
+        ti    = 1
 
         # Number of Time Steps
         if cloud == '1':
@@ -55,8 +56,9 @@ for reg in regions:
 
         # All data is loaded from the file
         mat  = loadmat('Data/Clouds/' + region + '_' + cloud + '.mat')
-        nom = 'Results/Explicit/Triangulations/' + region + '_' + cloud + '_QME.png'
-        nov = 'Results/Explicit/Triangulations/' + region + '_' + cloud + '.mp4'
+        nom = 'Results/Triangulations/' + region + '_' + cloud + '_QME.png'
+        nov = 'Results/Triangulations/' + region + '_' + cloud + '.mp4'
+        nop = 'Results/Triangulations/' + region + '_' + cloud + '_'
 
         # Node data is saved
         p   = mat['p']
@@ -65,8 +67,10 @@ for reg in regions:
             tt -= 1
 
         # Poisson 2D computed in a triangulation
+        print('Working in the triangulation', region, 'with size', cloud)
         u_ap, u_ex, vec = Diffusion_2D.Triangulation(p, tt, fDIF, nu, t)
         er = Errors.Cloud_Transient(p, vec, u_ap, u_ex)
         print('The maximum mean square error in the triangulation', region, 'with size', cloud, 'is: ', er.max())
         Graph.Error_sav(er,nom)
         Graph.Cloud_Transient_sav(p, tt, u_ap, u_ex, nov)
+        Graph.Cloud_Static_sav(p, tt, u_ap, u_ex, nop)

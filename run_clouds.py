@@ -55,8 +55,8 @@ for reg in regions:
 
         # All data is loaded from the file
         mat = loadmat('Data/Clouds/' + regi + '_' + cloud + '.mat')
-        nom = 'Results/Explicit/Clouds/' + regi + '_' + cloud + '_QME.png'
-        nov = 'Results/Explicit/Clouds/' + regi + '_' + cloud + '.mp4'
+        nom = 'Results/Clouds/' + regi + '_' + cloud + '_QME.png'
+        nov = 'Results/Clouds/' + regi + '_' + cloud + '.mp4'
 
         # Node data is saved
         p   = mat['p']

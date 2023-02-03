@@ -23,18 +23,62 @@ from matplotlib import cm
 import moviepy.editor as mpy
 from moviepy.video.io.bindings import mplfig_to_npimage
 
+def Mesh_Static_sav(x, y, u_ap, u_ex, nom):
+    t    = len(u_ex[0,0,:])
+    step = int(np.ceil(t/2))
+    min  = u_ex.min()
+    max  = u_ex.max()
+    T    = np.linspace(0,1,t)
+    
+    fig, (ax1, ax2) = plt.subplots(1, 2, subplot_kw = {"projection": "3d"}, figsize=(8, 4))
+    tin = float(T[0])
+    plt.suptitle('Solution at t = %1.3f s.' %tin)
+    ax1.plot_surface(x, y, u_ap[:,:,0], cmap=cm.coolwarm)
+    ax1.set_zlim([min, max])
+    ax1.set_title('Approximation')
+    ax2.plot_surface(x, y, u_ex[:,:,0], cmap=cm.coolwarm)
+    ax2.set_zlim([min, max])
+    ax2.set_title('Theoretical Solution')
+    nok = nom + '00.png'
+    plt.savefig(nok)
+    plt.close()
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, subplot_kw = {"projection": "3d"}, figsize=(8, 4))
+    tin = float(T[step])
+    plt.suptitle('Solution at t = %1.3f s.' %tin)
+    ax1.plot_surface(x, y, u_ap[:,:,step], cmap=cm.coolwarm)
+    ax1.set_zlim([min, max])
+    ax1.set_title('Approximation')
+    ax2.plot_surface(x, y, u_ex[:,:,step], cmap=cm.coolwarm)
+    ax2.set_zlim([min, max])
+    ax2.set_title('Theoretical Solution')
+    nok = nom + '05.png'
+    plt.savefig(nok)
+    plt.close()
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, subplot_kw = {"projection": "3d"}, figsize=(8, 4))
+    tin = float(T[t-1])
+    plt.suptitle('Solution at t = %1.3f s.' %tin)
+    ax1.plot_surface(x, y, u_ap[:,:,t-1], cmap=cm.coolwarm)
+    ax1.set_zlim([min, max])
+    ax1.set_title('Approximation')
+    ax2.plot_surface(x, y, u_ex[:,:,t-1], cmap=cm.coolwarm)
+    ax2.set_zlim([min, max])
+    ax2.set_title('Theoretical Solution')
+    nok = nom + '10.png'
+    plt.savefig(nok)
+    plt.close()
+
+
 def Mesh_Transient(x, y, u_ap, u_ex):
     t    = len(u_ex[0,0,:])
     step = int(np.ceil(t/50))
     min  = u_ex.min()
     max  = u_ex.max()
     T    = np.linspace(0,1,t)
-
-    fig, (ax1, ax2) = plt.subplots(1, 2, subplot_kw = {"projection": "3d"}, figsize=(8, 4))
     
     for k in range(0,t,step):
-        ax1.clear()
-        ax2.clear()
+        fig, (ax1, ax2) = plt.subplots(1, 2, subplot_kw = {"projection": "3d"}, figsize=(8, 4))
         tin = float(T[k])
         plt.suptitle('Solution at t = %1.3f s.' %tin)
         
@@ -47,9 +91,9 @@ def Mesh_Transient(x, y, u_ap, u_ex):
         ax2.set_title('Theoretical Solution')
 
         plt.pause(0.01)
+        plt.close()
     
-    ax1.clear()
-    ax2.clear()
+    fig, (ax1, ax2) = plt.subplots(1, 2, subplot_kw = {"projection": "3d"}, figsize=(8, 4))
     tin = float(T[t-1])
     plt.suptitle('Solution at t = %1.3f s.' %tin)
     
@@ -62,6 +106,7 @@ def Mesh_Transient(x, y, u_ap, u_ex):
     ax2.set_title('Theoretical Solution')
 
     plt.pause(0.1)
+
 
 def Mesh_Transient_sav(x, y, u_ap, u_ex, nom):
     t      = len(u_ex[0,0,:])
@@ -105,6 +150,56 @@ def Mesh_Transient_sav(x, y, u_ap, u_ex, nom):
     animation = mpy.VideoClip(lambda t: frames[int(t * 10)], duration=len(frames)/10)
     animation.write_videofile(nom, fps=10)
 
+
+def Cloud_Static_sav(p, tt, u_ap, u_ex, nom):
+    if tt.min() == 1:
+        tt -= 1
+    t    = len(u_ex[0,:])
+    step = int(np.ceil(t/2))
+    min  = u_ex.min()
+    max  = u_ex.max()
+    T    = np.linspace(0,1,t)
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, subplot_kw = {"projection": "3d"}, figsize=(8, 4))
+    tin = float(T[0])
+    plt.suptitle('Solution at t = %1.3f s.' %tin)
+    ax1.plot_trisurf(p[:,0], p[:,1], u_ap[:,0], triangles=tt, cmap=cm.coolwarm)
+    ax1.set_zlim([min, max])
+    ax1.set_title('Approximation')
+    ax2.plot_trisurf(p[:,0], p[:,1], u_ex[:,0], triangles=tt, cmap=cm.coolwarm)
+    ax2.set_zlim([min, max])
+    ax2.set_title('Theoretical Solution')
+    nok = nom + '00.png'
+    plt.savefig(nok)
+    plt.close()
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, subplot_kw = {"projection": "3d"}, figsize=(8, 4))
+    tin = float(T[step])
+    plt.suptitle('Solution at t = %1.3f s.' %tin)
+    ax1.plot_trisurf(p[:,0], p[:,1], u_ap[:,step], triangles=tt, cmap=cm.coolwarm)
+    ax1.set_zlim([min, max])
+    ax1.set_title('Approximation')
+    ax2.plot_trisurf(p[:,0], p[:,1], u_ex[:,step], triangles=tt, cmap=cm.coolwarm)
+    ax2.set_zlim([min, max])
+    ax2.set_title('Theoretical Solution')
+    nok = nom + '05.png'
+    plt.savefig(nok)
+    plt.close()
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, subplot_kw = {"projection": "3d"}, figsize=(8, 4))
+    tin = float(T[t-1])
+    plt.suptitle('Solution at t = %1.3f s.' %tin)
+    ax1.plot_trisurf(p[:,0], p[:,1], u_ap[:,t-1], triangles=tt, cmap=cm.coolwarm)
+    ax1.set_zlim([min, max])
+    ax1.set_title('Approximation')
+    ax2.plot_trisurf(p[:,0], p[:,1], u_ex[:,t-1], triangles=tt, cmap=cm.coolwarm)
+    ax2.set_zlim([min, max])
+    ax2.set_title('Theoretical Solution')
+    nok = nom + '10.png'
+    plt.savefig(nok)
+    plt.close()
+
+
 def Cloud_Transient(p, tt, u_ap, u_ex):
     if tt.min() == 1:
         tt -= 1
@@ -113,12 +208,9 @@ def Cloud_Transient(p, tt, u_ap, u_ex):
     min  = u_ex.min()
     max  = u_ex.max()
     T    = np.linspace(0,1,t)
-    
-    fig, (ax1, ax2) = plt.subplots(1, 2, subplot_kw = {"projection": "3d"}, figsize=(8, 4))
 
     for k in range(0,t,step):
-        ax1.clear()
-        ax2.clear()
+        fig, (ax1, ax2) = plt.subplots(1, 2, subplot_kw = {"projection": "3d"}, figsize=(8, 4))
         tin = float(T[k])
         plt.suptitle('Solution at t = %1.3f s.' %tin)
 
@@ -131,9 +223,9 @@ def Cloud_Transient(p, tt, u_ap, u_ex):
         ax2.set_title('Theoretical Solution')
 
         plt.pause(0.01)
+        plt.close()
 
-    ax1.clear()
-    ax2.clear()
+    fig, (ax1, ax2) = plt.subplots(1, 2, subplot_kw = {"projection": "3d"}, figsize=(8, 4))
     tin = float(T[t-1])
     plt.suptitle('Solution at t = %1.3f s.' %tin)
 
@@ -146,6 +238,7 @@ def Cloud_Transient(p, tt, u_ap, u_ex):
     ax2.set_title('Theoretical Solution')
 
     plt.pause(0.1)
+
 
 def Cloud_Transient_sav(p, tt, u_ap, u_ex, nom):
     if tt.min() == 1:
@@ -191,6 +284,7 @@ def Cloud_Transient_sav(p, tt, u_ap, u_ex, nom):
     animation = mpy.VideoClip(lambda t: frames[int(t * 10)], duration=len(frames)/10)
     animation.write_videofile(nom, fps=10)
 
+
 def Error(er):
     t = len(er)
     T = np.linspace(0,1,t)
@@ -206,6 +300,7 @@ def Error(er):
 
     plt.suptitle('Quadratic Mean Error')
     plt.show()
+
 
 def Error_sav(er,nom):
     t = len(er)
