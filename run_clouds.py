@@ -55,7 +55,7 @@ for reg in regions:
 
         # All data is loaded from the file
         mat = loadmat('Data/Clouds/' + regi + '_' + cloud + '.mat')
-        nom = 'Results/Clouds/QME/' + regi + '_' + cloud + '_QME.png'
+        nom = 'Results/Clouds/QME/' + regi + '_' + cloud + '.png'
         nov = 'Results/Clouds/Videos/' + regi + '_' + cloud + '.mp4'
         nop = 'Results/Clouds/Steps/' + regi + '_' + cloud + '_'
 

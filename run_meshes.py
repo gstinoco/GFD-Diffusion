@@ -41,11 +41,11 @@ for reg in regions:
 
         # Number of Time Steps
         if mesh == '21':
-            t = 1000
-        elif mesh == '41':
             t = 2000
-        elif mesh == '81':
+        elif mesh == '41':
             t = 4000
+        elif mesh == '81':
+            t = 8000
         else:
             t = 10000
 
@@ -58,10 +58,10 @@ for reg in regions:
             return fun
 
         # All data is loaded from the file
-        mat = loadmat('Data/Meshes/' + regi + mesh + '.mat')
-        nom = 'Results/Meshes/' + regi + mesh + '_QME.png'
-        nov = 'Results/Meshes/' + regi + mesh + '.mp4'
-        nop = 'Results/Meshes/' + regi + mesh + '_'
+        mat = loadmat('Data/Meshes/' + regi + '_' + mesh + '.mat')
+        nom = 'Results/Meshes/QME/' + regi + '_' + mesh + '.png'
+        nov = 'Results/Meshes/Videos/' + regi + '_' + mesh + '.mp4'
+        nop = 'Results/Meshes/Steps/' + regi + '_' + mesh + '_'
 
         # Node data is saved
         x  = mat['x']

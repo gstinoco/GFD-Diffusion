@@ -1,6 +1,6 @@
 CAB:
-    The maximum mean square error in the triangulation CAB with size 1 is:  1.0677701053223382e-05
-    The maximum mean square error in the triangulation CAB with size 2 is:  1.470884052526493e-06
+    The maximum mean square error in the triangulation CAB with size 1 is:  1.2671307742887393e-05
+    The maximum mean square error in the triangulation CAB with size 2 is:  2.8622877657411857e-06
     The maximum mean square error in the triangulation CAB with size 3 is:  1.4575376257628673e-07
 
 CUA:
