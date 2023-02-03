@@ -38,7 +38,7 @@ for reg in regions:
 
         # Number of Time Steps
         if cloud == '1':
-            t = 500
+            t = 1000
         elif cloud == '2':
             t = 2000
         elif cloud == '3':
@@ -67,7 +67,6 @@ for reg in regions:
             tt -= 1
 
         # Poisson 2D computed in a triangulation
-        print('Working in the triangulation', regi, 'with size', cloud)
         u_ap, u_ex, vec = Diffusion_2D.Triangulation(p, tt, fDIF, nu, t)
         er = Errors.Cloud_Transient(p, vec, u_ap, u_ex)
         print('The maximum mean square error in the triangulation', regi, 'with size', cloud, 'is: ', er.max())

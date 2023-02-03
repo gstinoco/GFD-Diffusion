@@ -41,7 +41,7 @@ for reg in regions:
 
         # Number of Time Steps
         if mesh == '21':
-            t = 500
+            t = 1000
         elif mesh == '41':
             t = 2000
         elif mesh == '81':

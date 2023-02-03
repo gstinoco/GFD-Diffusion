@@ -37,11 +37,11 @@ for reg in regions:
 
         # Number of Time Steps
         if cloud == '1':
-            t = 500
-        elif cloud == '2':
             t = 2000
-        elif cloud == '3':
+        elif cloud == '2':
             t = 4000
+        elif cloud == '3':
+            t = 8000
         else:
             t = 10000
 
@@ -55,9 +55,9 @@ for reg in regions:
 
         # All data is loaded from the file
         mat = loadmat('Data/Clouds/' + regi + '_' + cloud + '.mat')
-        nom = 'Results/Clouds/' + regi + '_' + cloud + '_QME.png'
-        nov = 'Results/Clouds/' + regi + '_' + cloud + '.mp4'
-        nop = 'Results/Clouds/' + regi + '_' + cloud + '_'
+        nom = 'Results/Clouds/QME/' + regi + '_' + cloud + '_QME.png'
+        nov = 'Results/Clouds/Videos/' + regi + '_' + cloud + '.mp4'
+        nop = 'Results/Clouds/Steps/' + regi + '_' + cloud + '_'
 
         # Node data is saved
         p   = mat['p']
