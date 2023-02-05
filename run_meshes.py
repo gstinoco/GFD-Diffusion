@@ -27,8 +27,8 @@ nu = 0.2
 # The boundary conditions are defined as
 #   f = e^{-2*\pi^2vt}\cos(\pi x)cos(\pi y)
 
-def fDIF(x, y, t, v):
-    fun = np.exp(-2*np.pi**2*v*t)*np.cos(np.pi*x)*np.cos(np.pi*y)
+def fDIF(x, y, t, nu):
+    fun = np.exp(-2*np.pi**2*nu*t)*np.cos(np.pi*x)*np.cos(np.pi*y)
     return fun
 
 # Names of the regions
