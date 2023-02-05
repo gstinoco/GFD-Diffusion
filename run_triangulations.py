@@ -21,7 +21,7 @@ import Scripts.Graph as Graph
 import Diffusion_2D
 
 # Diffusion coefficient
-nu = 0.2
+v = 0.2
 
 # Names of the regions
 regions = ['CAB','CUA','CUI','DOW','ENG','GIB','HAB','MIC','PAT','ZIR']
@@ -67,7 +67,7 @@ for reg in regions:
             tt -= 1
 
         # Poisson 2D computed in a triangulation
-        u_ap, u_ex, vec = Diffusion_2D.Triangulation(p, tt, fDIF, nu, t)
+        u_ap, u_ex, vec = Diffusion_2D.Triangulation(p, tt, fDIF, v, t)
         er = Errors.Cloud_Transient(p, vec, u_ap, u_ex)
         print('The maximum mean square error in the triangulation', regi, 'with size', cloud, 'is: ', er.max())
         Graph.Error_sav(er,nom)

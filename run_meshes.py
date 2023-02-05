@@ -21,14 +21,14 @@ import Scripts.Graph as Graph
 import Diffusion_2D
 
 # Diffusion coefficient
-nu = 0.2
+v = 0.2
 
 # Boundary conditions
 # The boundary conditions are defined as
 #   f = e^{-2*\pi^2vt}\cos(\pi x)cos(\pi y)
 
-def fDIF(x, y, t, nu):
-    fun = np.exp(-2*np.pi**2*nu*t)*np.cos(np.pi*x)*np.cos(np.pi*y)
+def fDIF(x, y, t, v):
+    fun = np.exp(-2*np.pi**2*v*t)*np.cos(np.pi*x)*np.cos(np.pi*y)
     return fun
 
 # Names of the regions
@@ -64,9 +64,9 @@ for reg in regions:
         y  = mat['y']
 
         # Poisson 2D computed in a logically rectangular mesh
-        u_ap, u_ex = Diffusion_2D.Mesh(x, y, fDIF, nu, t)
+        u_ap, u_ex = Diffusion_2D.Mesh_2(x, y, fDIF, v, t)
         er = Errors.Mesh_Transient(x, y, u_ap, u_ex)
         print('The maximum mean square error in the mesh', regi, 'with', mesh, 'points per side is: ', er.max())
-        Graph.Error_sav(er, nom)
-        Graph.Mesh_Transient_sav(x, y, u_ap, u_ex, nov)
-        Graph.Mesh_Static_sav(x, y, u_ap, u_ex, nop)
+        #Graph.Error_sav(er, nom)
+        #Graph.Mesh_Transient_sav(x, y, u_ap, u_ex, nov)
+        #Graph.Mesh_Static_sav(x, y, u_ap, u_ex, nop)

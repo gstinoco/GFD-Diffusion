@@ -77,7 +77,7 @@ def Mesh_Transient(x, y, u_ap, u_ex):
     max  = u_ex.max()
     T    = np.linspace(0,1,t)
     
-    for k in range(0,t,step):
+    for k in np.arange(0,t,step):
         fig, (ax1, ax2) = plt.subplots(1, 2, subplot_kw = {"projection": "3d"}, figsize=(8, 4))
         tin = float(T[k])
         plt.suptitle('Solution at t = %1.3f s.' %tin)
@@ -116,7 +116,7 @@ def Mesh_Transient_sav(x, y, u_ap, u_ex, nom):
     T      = np.linspace(0,1,t)
     frames = []
     
-    for k in range(0,t,step):
+    for k in np.arange(0,t,step):
         fig, (ax1, ax2) = plt.subplots(1, 2, subplot_kw = {"projection": "3d"}, figsize=(8, 4))
         tin = float(T[k])
         plt.suptitle('Solution at t = %1.3f s.' %tin)
@@ -148,7 +148,7 @@ def Mesh_Transient_sav(x, y, u_ap, u_ex, nom):
     plt.close()
 
     animation = mpy.VideoClip(lambda t: frames[int(t * 10)], duration=len(frames)/10)
-    animation.write_videofile(nom, fps=10)
+    animation.write_videofile(nom, fps=10, verbose=False, logger=None)
 
 
 def Cloud_Static_sav(p, tt, u_ap, u_ex, nom):
@@ -209,7 +209,7 @@ def Cloud_Transient(p, tt, u_ap, u_ex):
     max  = u_ex.max()
     T    = np.linspace(0,1,t)
 
-    for k in range(0,t,step):
+    for k in np.arange(0,t,step):
         fig, (ax1, ax2) = plt.subplots(1, 2, subplot_kw = {"projection": "3d"}, figsize=(8, 4))
         tin = float(T[k])
         plt.suptitle('Solution at t = %1.3f s.' %tin)
@@ -250,7 +250,7 @@ def Cloud_Transient_sav(p, tt, u_ap, u_ex, nom):
     T      = np.linspace(0,1,t)
     frames = []
 
-    for k in range(0,t,step):
+    for k in np.arange(0,t,step):
         fig, (ax1, ax2) = plt.subplots(1, 2, subplot_kw = {"projection": "3d"}, figsize = (8, 4))
         tin = float(T[k])
         plt.suptitle('Solution at t = %1.3f s.' %tin)
@@ -282,7 +282,7 @@ def Cloud_Transient_sav(p, tt, u_ap, u_ex, nom):
     plt.close()
 
     animation = mpy.VideoClip(lambda t: frames[int(t * 10)], duration=len(frames)/10)
-    animation.write_videofile(nom, fps=10)
+    animation.write_videofile(nom, fps=10, verbose=False, logger=None)
 
 
 def Error(er):

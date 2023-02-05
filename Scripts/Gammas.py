@@ -34,8 +34,8 @@ def Mesh(x, y, L):
     n        = me[1]                                                                # The number of nodes in y.
     Gamma    = np.zeros([m,n,9])                                                    # Gamma initialization with zeros.
 
-    for i in range(1,m-1):                                                          # For each of the nodes in x.
-        for j in range(1,n-1):                                                      # For each of the nodes in y.
+    for i in np.arange(1,m-1):                                                      # For each of the nodes in x.
+        for j in np.arange(1,n-1):                                                  # For each of the nodes in y.
             dx = np.array([x[i + 1, j]   - x[i, j], x[i + 1, j + 1] - x[i, j], \
                            x[i, j + 1]   - x[i, j], x[i - 1, j + 1] - x[i, j], \
                            x[i - 1, j]   - x[i, j], x[i - 1, j - 1] - x[i, j], \
@@ -50,7 +50,48 @@ def Mesh(x, y, L):
             M = np.linalg.pinv(M)                                                   # The pseudoinverse of matrix M.
             YY = M@L                                                                # M*L computation.
             Gem = np.vstack([-sum(YY), YY])                                         # Gamma values are found.
-            for k in range(9):                                                      # For each of the Gamma values.
+            for k in np.arange(9):                                                  # For each of the Gamma values.
+                Gamma[i,j,k] = Gem[k]                                               # The Gamma value is stored.
+
+    return Gamma
+
+def Mesh_2(x, y, L):
+    # 2D Meshes Gammas Computation.
+    # 
+    # This routine computes the Gamma values for logically rectangular meshes.
+    # 
+    # Input parameters
+    #   x           m x n           Array           Array with the coordinates in x of the nodes.
+    #   y           m x n           Array           Array with the coordinates in y of the nodes.
+    #   L           5 x 1           Array           Array with the values of the differential operator.
+    # 
+    # Output parameters
+    #   Gamma       m x n x 9       Array           Array with the computed gamma values.
+
+    me       = x.shape                                                              # The size of the mesh is found.
+    m        = me[0]                                                                # The number of nodes in x.
+    n        = me[1]                                                                # The number of nodes in y.
+    Gamma    = np.zeros([m,n,9])                                                    # Gamma initialization with zeros.
+
+    for i in np.arange(1,m-1):                                                      # For each of the nodes in x.
+        for j in np.arange(1,n-1):                                                  # For each of the nodes in y.
+            dx = []                                                                 # dx initialization with zeros.
+            dy = []                                                                 # dy initialization with zeros.
+            for l in np.arange(i-1,i+2):
+                for o in np.arange(j-1,j+2):
+                    if l == i and o == j:
+                        pass
+                    else:
+                        dx.append(x[l,o] - x[i,j])
+                        dy.append(y[l,o] - y[i,j])
+            
+            dx = np.array(dx)
+            dy = np.array(dy)
+            M = np.vstack([[dx], [dy], [dx**2], [dx*dy], [dy**2]])                  # M matrix is assembled.
+            M = np.linalg.pinv(M)                                                   # The pseudoinverse of matrix M.
+            YY = M@L                                                                # M*L computation.
+            Gem = np.vstack([-sum(YY), YY])                                         # Gamma values are found.
+            for k in np.arange(9):                                                  # For each of the Gamma values.
                 Gamma[i,j,k] = Gem[k]                                               # The Gamma value is stored.
 
     return Gamma

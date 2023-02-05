@@ -1,0 +1,21 @@
+CAB:
+    The maximum mean square error in the mesh CAB with 21 points per side is:  1.4278960206283488e-04
+    The maximum mean square error in the mesh CAB with 21 points per side is:  1.4278960206276874e-04
+    
+    The maximum mean square error in the mesh CAB with 41 points per side is:  3.068707316313340e-05
+    The maximum mean square error in the mesh CAB with 41 points per side is:  3.0687073163090406e-05
+    
+    The maximum mean square error in the mesh CAB with 81 points per side is:  nan
+
+CUA:
+    The maximum mean square error in the mesh CUA with 21 points per side is:  7.102604698229864e-04
+    The maximum mean square error in the mesh CUA with 41 points per side is:  1.4768490852011217e-04
+    The maximum mean square error in the mesh CUA with 81 points per side is:  2.2362562516586124e-05
+
+CUI:
+    The maximum mean square error in the mesh CUI with 21 points per side is:  3.7875237652261067e-04
+    The maximum mean square error in the mesh CUI with 41 points per side is:  nan
+    The maximum mean square error in the mesh CUI with 81 points per side is:  nan
+
+DOW:
+    The maximum mean square error in the mesh DOW with 21 points per side is:  4.2402229529180866e-04
