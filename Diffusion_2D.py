@@ -19,10 +19,9 @@ import Scripts.Gammas as Gammas
 import Scripts.Neighbors as Neighbors
 
 def Mesh(x, y, f, nu, t):
-    # 2D Diffusion implemented in Logically Rectangular Meshes.
+    # 2D Diffusion Equation implemented in Logically Rectangular Meshes.
     # 
-    # This routine calculates an approximation to the solution of Diffusion equation in 2D using an Explicit Generalized Finite Differences scheme in logically rectangular meshes.
-    # For this routine, a matrix formulation is used compute the approximation.
+    # This routine calculates an approximation to the solution of Diffusion equation in 2D using a Generalized Finite Differences scheme in logically rectangular meshes.
     # 
     # The problem to solve is:
     # 
@@ -47,15 +46,14 @@ def Mesh(x, y, f, nu, t):
     dt   = T[1] - T[0]                                                              # dt computation.
     u_ap = np.zeros([m, n, t])                                                      # u_ap initialization with zeros.
     u_ex = np.zeros([m, n, t])                                                      # u_ex initialization with zeros.
-    urr  = np.zeros([m*n,1])                                                        # u_rr initialization with zeros.
 
     # Boundary conditions
     for k in np.arange(t):
         for i in np.arange(m):                                                      # For each of the nodes on the x boundaries.
-            u_ap[i, 0,   k] = f(x[i, 0], y[i, 0], T[k], nu)                         # The boundary condition is assigned at the first y.
+            u_ap[i, 0,   k] = f(x[i, 0]  , y[i, 0]  , T[k], nu)                     # The boundary condition is assigned at the first y.
             u_ap[i, n-1, k] = f(x[i, n-1], y[i, n-1], T[k], nu)                     # The boundary condition is assigned at the last y.
         for j in np.arange(n):                                                      # For each of the nodes on the y boundaries.
-            u_ap[0,   j, k] = f(x[0, j], y[0, j], T[k], nu)                         # The boundary condition is assigned at the first x.
+            u_ap[0,   j, k] = f(x[0, j]  , y[0, j]  , T[k], nu)                     # The boundary condition is assigned at the first x.
             u_ap[m-1, j, k] = f(x[m-1, j], y[m-1, j], T[k], nu)                     # The boundary condition is assigned at the last x.
   
     # Initial condition
@@ -63,23 +61,24 @@ def Mesh(x, y, f, nu, t):
         for j in np.arange(n):                                                      # For each of the nodes on y.
             u_ap[i, j, 0] = f(x[i, j], y[i, j], T[0], nu)                           # The initial condition is assigned.
 
-    # Computation of K with Gammas
-    L  = np.vstack([[0], [0], [2*nu*dt], [0], [2*nu*dt]])                           # The values of the differential operator are assigned.
-    K  = Gammas.K(x, y, L)                                                          # K computation that include the Gammas.
-    Kp = np.identity(m*n) + K                                                       # Kp with an explicit formulation.
+    # Computation of Gamma values
+    L = np.vstack([[0], [0], [2*nu*dt], [0], [2*nu*dt]])                            # The values of the differential operator are assigned.
+    Gamma = Gammas.Mesh(x, y, L)                                                    # Gamma computation.
 
     # A Generalized Finite Differences Method
     for k in np.arange(1,t):                                                        # For each time step.
-        R = Gammas.R(u_ap, m, n, k)                                                 # R Matrix is computed.
-        for i in np.arange(m):                                                      # For each of the nodes on x.
-            for j in np.arange(n):                                                  # For each of the nodes on y.
-                urr[i + j*m, 0] = u_ap[i, j, k-1]                                   # urr values' assignation.
-        
-        un = (Kp@urr) + R                                                           # un is Kp*urr + R. 
-
-        for i in np.arange(1,m-1):                                                  # For each of the interior nodes on x.
-            for j in np.arange(1,n-1):                                              # For each of the interior nodes on y.
-                u_ap[i, j, k] = un[i + (j)*m]                                       # u_ap values' are assigned.
+        for i in np.arange(1,m-1):                                                  # For each of the nodes on the x axis.
+            for j in np.arange(1,n-1):                                              # For each of the nodes on the y axis.
+                u_ap[i, j, k] = u_ap[i, j, k-1] + (\
+                    Gamma[i, j, 0]*u_ap[i    , j    , k-1] + \
+                    Gamma[i, j, 1]*u_ap[i + 1, j    , k-1] + \
+                    Gamma[i, j, 2]*u_ap[i + 1, j + 1, k-1] + \
+                    Gamma[i, j, 3]*u_ap[i    , j + 1, k-1] + \
+                    Gamma[i, j, 4]*u_ap[i - 1, j + 1, k-1] + \
+                    Gamma[i, j, 5]*u_ap[i - 1, j    , k-1] + \
+                    Gamma[i, j, 6]*u_ap[i - 1, j - 1, k-1] + \
+                    Gamma[i, j, 7]*u_ap[i    , j - 1, k-1] + \
+                    Gamma[i, j, 8]*u_ap[i + 1, j - 1, k-1])                         # u_ap es calculated at the central node.
 
     # Theoretical Solution
     for k in np.arange(t):                                                          # For all the time steps.

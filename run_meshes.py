@@ -20,12 +20,16 @@ import Scripts.Errors as Errors
 import Scripts.Graph as Graph
 import Diffusion_2D
 
-
 # Diffusion coefficient
 nu = 0.2
 
-# Diffusion coefficient
-nu = 0.2
+# Boundary conditions
+# The boundary conditions are defined as
+#   f = e^{-2*\pi^2vt}\cos(\pi x)cos(\pi y)
+
+def fDIF(x, y, t, v):
+    fun = np.exp(-2*np.pi**2*v*t)*np.cos(np.pi*x)*np.cos(np.pi*y)
+    return fun
 
 # Names of the regions
 regions = ['CAB','CUA','CUI','DOW','ENG','GIB','HAB','MIC','PAT','ZIR']
@@ -48,14 +52,6 @@ for reg in regions:
             t = 8000
         else:
             t = 10000
-
-        # Boundary conditions
-        # The boundary conditions are defined as
-        #   f = e^{-2*\pi^2vt}\cos(\pi x)cos(\pi y)
-
-        def fDIF(x, y, t, v):
-            fun = np.exp(-2*np.pi**2*v*t)*np.cos(np.pi*x)*np.cos(np.pi*y)
-            return fun
 
         # All data is loaded from the file
         mat = loadmat('Data/Meshes/' + regi + '_' + mesh + '.mat')
