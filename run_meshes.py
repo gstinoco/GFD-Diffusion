@@ -45,11 +45,11 @@ for reg in regions:
 
         # Number of Time Steps
         if mesh == '21':
-            t = 2000
+            t = 5000
         elif mesh == '41':
-            t = 4000
+            t = 10000
         elif mesh == '81':
-            t = 8000
+            t = 20000
         else:
             t = 10000
 
@@ -67,6 +67,6 @@ for reg in regions:
         u_ap, u_ex = Diffusion_2D.Mesh_2(x, y, fDIF, v, t)
         er = Errors.Mesh_Transient(x, y, u_ap, u_ex)
         print('The maximum mean square error in the mesh', regi, 'with', mesh, 'points per side is: ', er.max())
-        #Graph.Error_sav(er, nom)
-        #Graph.Mesh_Transient_sav(x, y, u_ap, u_ex, nov)
-        #Graph.Mesh_Static_sav(x, y, u_ap, u_ex, nop)
+        Graph.Error_sav(er, nom)
+        Graph.Mesh_Transient_sav(x, y, u_ap, u_ex, nov)
+        Graph.Mesh_Static_sav(x, y, u_ap, u_ex, nop)
