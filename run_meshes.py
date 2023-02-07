@@ -64,7 +64,7 @@ for reg in regions:
         y  = mat['y']
 
         # Poisson 2D computed in a logically rectangular mesh
-        u_ap, u_ex = Diffusion_2D.Mesh_2(x, y, fDIF, v, t)
+        u_ap, u_ex = Diffusion_2D.Mesh(x, y, fDIF, v, t)
         er = Errors.Mesh_Transient(x, y, u_ap, u_ex)
         print('The maximum mean square error in the mesh', regi, 'with', mesh, 'points per side is: ', er.max())
         Graph.Error_sav(er, nom)
