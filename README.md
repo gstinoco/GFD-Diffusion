@@ -6,12 +6,12 @@ All the codes are distributed under MIT License on [GitHub](https://github.com/g
 ![Approximate and Theoretical solutions of the problem on ENG region](/Results/Clouds/ENG_3.png)
 
 ## Description :memo:
-This repository proposes a way to make an approximation to the Poisson Equation in two dimensions over regions that can range from regular (CUA) to highly irregular (ENG).
+This repository proposes a way to make an approximation to Diffusion Equation in two dimensions over regions that can range from regular (CUA) to highly irregular (ENG).
 
 For this, the proposed solution uses a Generalized Finite Differences Method for the numerical solution over all the regions on:<br>
 1. Logically Rectangular Meshes.
 2. Triangulations.
-3. Irregular clouds of points.
+3. Unstructured clouds of points.
 
 Cuitzeo Lake Region                                           | Cuitzeo Lake Structured Grid
 :------------------------------------------------------------:|:------------------------------------------------------------:
@@ -58,10 +58,6 @@ All the codes presented were developed by:
     Universidad Michoacana de San Nicolás de Hidalgo<br>
     ricardo.roman@umich.mx<br>
     https://orcid.org/0000-0001-8521-9391
-
-## Details :books:
-More details on the Methods presented in these codes can be found in the following [Jupyter Notebook](Poisson_2D.ipynb)
-  
 
 ## Funding :dollar:
 With the financing of:
