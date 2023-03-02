@@ -164,8 +164,7 @@ def Cloud(p, f, v, t, triangulation = False, tt = [], implicit = False, lam = 0.
     elif implicit == True:                                                          # For the implicit scheme.
         K2 = np.linalg.pinv(np.identity(m)-(1-lam)*K)                               # Implicit formulation of K.
         for k in np.arange(1,t):                                                    # For each of the time steps.
-            un = (np.identity(m) + lam*K)@u_ap[:,k-1]                               # The new time-level is computed.
-            un = K2@un                                                              # The new time-level is computed.
+            un = K2@((np.identity(m) + lam*K)@u_ap[:,k-1])                          # The new time-level is computed.
             for i in np.arange(m):                                                  # For all the nodes.
                 if p[i,2] == 0:                                                     # If the node is an inner node.
                     u_ap[i,k] = un[i]                                               # Save the computed solution.
