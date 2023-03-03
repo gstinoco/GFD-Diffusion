@@ -45,13 +45,13 @@ for reg in regions:
 
         # Number of Time Steps
         if mesh == '21':
-            t = 5000
+            t = 1000
         elif mesh == '41':
-            t = 10000
+            t = 4000
         elif mesh == '81':
-            t = 20000
+            t = 16000
         else:
-            t = 10000
+            t = 32000
 
         # All data is loaded from the file
         mat = loadmat('Data/Meshes/' + regi + '_' + mesh + '.mat')
@@ -66,7 +66,7 @@ for reg in regions:
         # Poisson 2D computed in a logically rectangular mesh
         u_ap, u_ex = Diffusion_2D.Mesh(x, y, fDIF, v, t)
         er = Errors.Mesh(x, y, u_ap, u_ex)
-        print('The maximum mean square error in the mesh', regi, 'with', mesh, 'points per side, with the implicit scheme is: ', er.max())
+        print('The maximum mean square error in the mesh', regi, 'with', mesh, 'points per side, with the explicit scheme is: ', er.max())
         Graph.Error_sav(er, nom)
         Graph.Mesh_Transient_sav(x, y, u_ap, u_ex, nov)
         Graph.Mesh_Static_sav(x, y, u_ap, u_ex, nop)
@@ -79,13 +79,13 @@ for reg in regions:
 
         # Number of Time Steps
         if mesh == '21':
-            t = 5000
+            t = 1000
         elif mesh == '41':
-            t = 10000
+            t = 4000
         elif mesh == '81':
-            t = 20000
+            t = 16000
         else:
-            t = 10000
+            t = 320000
 
         # All data is loaded from the file
         mat = loadmat('Data/Meshes/' + regi + '_' + mesh + '.mat')
