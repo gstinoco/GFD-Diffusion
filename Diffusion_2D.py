@@ -80,22 +80,16 @@ def Cloud(p, f, v, t, triangulation = False, tt = [], implicit = False, lam = 0.
     K = Gammas.Cloud(p, vec, L)                                                     # K computation with the required Gammas.
     
     # Generalized Finite Differences Method
-    ## Explicit Scheme
     if implicit == False:                                                           # For the explicit scheme.
-        for k in np.arange(1,t):                                                    # For each of the time steps.
-            un = (np.identity(m) + K)@u_ap[:,k-1]                                   # The new time-level is computed.
-            for i in np.arange(m):                                                  # For all the nodes.
-                if p[i,2] == 0:                                                     # If the node is an inner node.
-                    u_ap[i,k] = un[i]                                               # Save the computed solution.
+        K2 = np.identity(m) + K                                                     # Explicit formulation of K.
+    else:                                                                           # For the implicit scheme.
+        K2 = np.linalg.pinv(np.identity(m) - (1-lam)*K)@(np.identity(m) + lam*K)    # Implicit formulation of K.
 
-    ## Implicit Scheme
-    elif implicit == True:                                                          # For the implicit scheme.
-        K2 = np.linalg.pinv(np.identity(m)-(1-lam)*K)                               # Implicit formulation of K.
-        for k in np.arange(1,t):                                                    # For each of the time steps.
-            un = K2@((np.identity(m) + lam*K)@u_ap[:,k-1])                          # The new time-level is computed.
-            for i in np.arange(m):                                                  # For all the nodes.
-                if p[i,2] == 0:                                                     # If the node is an inner node.
-                    u_ap[i,k] = un[i]                                               # Save the computed solution.
+    for k in np.arange(1,t):                                                        # For each of the time steps.
+        un = K2@u_ap[:,k-1]                                                         # The new time-level is computed.
+        for i in np.arange(m):                                                      # For all the nodes.
+            if p[i,2] == 0:                                                         # If the node is an inner node.
+                u_ap[i,k] = un[i]                                                   # Save the computed solution.
         
     # Theoretical Solution
     for k in np.arange(t):                                                          # For all the time steps.
@@ -159,9 +153,9 @@ def Mesh(x, y, f, v, t, implicit = False, lam = 0.5):
     K  = Gammas.Mesh(x, y, L)                                                       # K computation that include the Gammas.
 
     if implicit == False:                                                           # For the explicit scheme.
-        Kp = np.identity(m*n) + K                                                   # Kp with an explicit formulation.
+        K2 = np.identity(m*n) + K                                                   # Kp with an explicit formulation.
     else:                                                                           # For the implicit scheme.
-        Kp = np.linalg.pinv(np.identity(m*n) \
+        K2 = np.linalg.pinv(np.identity(m*n) \
                             - (1-lam)*K)@(np.identity(m*n) + lam*K)                 # Kp with an explicit formulation.
 
     # A Generalized Finite Differences Method
@@ -171,7 +165,7 @@ def Mesh(x, y, f, v, t, implicit = False, lam = 0.5):
             for j in np.arange(n):                                                  # For each of the nodes on y.
                 urr[i + j*m, 0] = u_ap[i, j, k-1]                                   # urr values' assignation.
         
-        un = (Kp@urr) + R                                                           # un is Kp*urr + R. 
+        un = (K2@urr) + R                                                           # un is Kp*urr + R. 
 
         for i in np.arange(1,m-1):                                                  # For each of the interior nodes on x.
             for j in np.arange(1,n-1):                                              # For each of the interior nodes on y.
