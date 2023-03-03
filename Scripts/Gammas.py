@@ -64,7 +64,7 @@ def Cloud(p, vec, L):
     """
     2D Clouds of Points Gammas Computation.
      
-    This routine computes the Gamma values for clouds of points and triangulations and assemble the K matrix for the computations.
+    This function computes the Gamma values for clouds of points and triangulations and assemble the K matrix for the computations.
      
     Input:
         p           m x 3           Array           Array with the coordinates of the nodes and a flag for the boundary.

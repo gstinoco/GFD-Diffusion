@@ -20,7 +20,7 @@ import numpy as np
 import Scripts.Gammas as Gammas
 import Scripts.Neighbors as Neighbors
 
-def Mesh(x, y, f, v, t):
+def Mesh(x, y, f, v, t, implicit = False, lam = 0.5):
     """
     2D Diffusion Equation implemented in Logically Rectangular Meshes.
 

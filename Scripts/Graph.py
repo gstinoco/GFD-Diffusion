@@ -23,6 +23,23 @@ import moviepy.editor as mpy
 from moviepy.video.io.bindings import mplfig_to_npimage
 
 def Mesh_Static_sav(x, y, u_ap, u_ex, nom):
+    """
+    Mesh_Static_Sav
+
+    This function graphs and saves the approximated and theoretical solutions of the problem being solved at three different time levels.
+    Both solutions are presented side by side to help perform graphical comparisons between both solutions.
+    The graphics are stored, as figures, on drive on the current path, or whatever path were provided on "nom".
+
+    Input:
+        x           m x n           Array           Array with the x-coordinates of the nodes.
+        y           m x n           Array           Array with the y-coordinates of the nodes.
+        u_ap        m x n x t       Array           Array with the computed solution.
+        u_ex        m x n x t       Array           Array with the theoretical solution.
+        nom                         String          Name of the files to be saved to drive.
+    
+    Output:
+        None
+    """
     t    = len(u_ex[0,0,:])
     step = int(np.ceil(t/2))
     min  = u_ex.min()
@@ -70,6 +87,21 @@ def Mesh_Static_sav(x, y, u_ap, u_ex, nom):
 
 
 def Mesh_Transient(x, y, u_ap, u_ex):
+    """
+    Mesh_Transient
+
+    This function graphs the approximated and theoretical solutions of the problem being solved at several time levels.
+    Both solutions are presented side by side to help perform graphical comparisons between both solutions.
+    
+    Input:
+        x           m x n           Array           Array with the x-coordinates of the nodes.
+        y           m x n           Array           Array with the y-coordinates of the nodes.
+        u_ap        m x n x t       Array           Array with the computed solution.
+        u_ex        m x n x t       Array           Array with the theoretical solution.
+    
+    Output:
+        None
+    """
     t    = len(u_ex[0,0,:])
     step = int(np.ceil(t/50))
     min  = u_ex.min()
@@ -108,6 +140,23 @@ def Mesh_Transient(x, y, u_ap, u_ex):
 
 
 def Mesh_Transient_sav(x, y, u_ap, u_ex, nom):
+    """
+    Mesh_Transient_Sav
+
+    This function graphs and saves the approximated and theoretical solutions of the problem being solved at several time levels.
+    Both solutions are presented side by side to help perform graphical comparisons between both solutions.
+    The graphics are stored, as videos, on drive on the current path, or whatever path were provided on "nom".
+
+    Input:
+        x           m x n           Array           Array with the x-coordinates of the nodes.
+        y           m x n           Array           Array with the y-coordinates of the nodes.
+        u_ap        m x n x t       Array           Array with the computed solution.
+        u_ex        m x n x t       Array           Array with the theoretical solution.
+        nom                         String          Name of the file to be saved to drive.
+    
+    Output:
+        None
+    """
     t      = len(u_ex[0,0,:])
     step   = int(np.ceil(t/50))
     min    = u_ex.min()
@@ -151,6 +200,23 @@ def Mesh_Transient_sav(x, y, u_ap, u_ex, nom):
 
 
 def Cloud_Static_sav(p, tt, u_ap, u_ex, nom):
+    """
+    Cloud_Static_Sav
+
+    This function graphs and saves the approximated and theoretical solutions of the problem being solved at three different time levels.
+    Both solutions are presented side by side to help perform graphical comparisons between both solutions.
+    The graphics are stored, as figures, on drive on the current path, or whatever path were provided on "nom".
+
+    Input:
+        p           m x 2           Array           Array with the coordinates of the nodes.
+        tt          n x 3           Array           Array with the correspondence of the n triangles.
+        u_ap        m x t           Array           Array with the computed solution.
+        u_ex        m x t           Array           Array with the theoretical solution.
+        nom                         String          Name of the files to be saved to drive.
+    
+    Output:
+        None
+    """
     if tt.min() == 1:
         tt -= 1
     t    = len(u_ex[0,:])
@@ -200,6 +266,21 @@ def Cloud_Static_sav(p, tt, u_ap, u_ex, nom):
 
 
 def Cloud_Transient(p, tt, u_ap, u_ex):
+    """
+    Cloud_Transient
+
+    This function graphs and saves the approximated and theoretical solutions of the problem being solved at several time levels.
+    Both solutions are presented side by side to help perform graphical comparisons between both solutions.
+
+    Input:
+        p           m x 2           Array           Array with the coordinates of the nodes.
+        tt          n x 3           Array           Array with the correspondence of the n triangles.
+        u_ap        m x t           Array           Array with the computed solution.
+        u_ex        m x t           Array           Array with the theoretical solution.
+        
+    Output:
+        None
+    """
     if tt.min() == 1:
         tt -= 1
     t    = len(u_ex[0,:])
@@ -240,6 +321,23 @@ def Cloud_Transient(p, tt, u_ap, u_ex):
 
 
 def Cloud_Transient_sav(p, tt, u_ap, u_ex, nom):
+    """
+    Cloud_Transient_sav
+
+    This function graphs and saves the approximated and theoretical solutions of the problem being solved at several time levels.
+    Both solutions are presented side by side to help perform graphical comparisons between both solutions.
+    The graphics are stored, as video, on drive on the current path, or whatever path were provided on "nom".
+
+    Input:
+        p           m x 2           Array           Array with the coordinates of the nodes.
+        tt          n x 3           Array           Array with the correspondence of the n triangles.
+        u_ap        m x t           Array           Array with the computed solution.
+        u_ex        m x t           Array           Array with the theoretical solution.
+        nom                         String          Name of the files to be saved to drive.
+    
+    Output:
+        None
+    """
     if tt.min() == 1:
         tt -= 1
     t      = len(u_ex[0,:])
@@ -285,6 +383,17 @@ def Cloud_Transient_sav(p, tt, u_ap, u_ex, nom):
 
 
 def Error(er):
+    """
+    Error
+
+    This function graphs all the Quadratic Mean Errors computed between the approximated and theoretical solutions of the problem being solved.
+    
+    Input:
+        er          t x 1           Array           Array with the Quadratic Mean Error on each time step.
+    
+    Output:
+        None
+    """
     t = len(er)
     T = np.linspace(0,1,t)
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))
@@ -302,6 +411,19 @@ def Error(er):
 
 
 def Error_sav(er,nom):
+    """
+    Error_sav
+
+    This function graphs and saves all the Quadratic Mean Errors computed between the approximated and theoretical solutions of the problem being solved.
+    The graphic is stored, as an image, on drive on the current path, or whatever path were provided on "nom".
+
+    Input:
+        er          t x 1           Array           Array with the Quadratic Mean Error on each time step.
+        nom                         String          Name of the file to be saved to drive.
+    
+    Output:
+        None
+    """
     t = len(er)
     T = np.linspace(0,1,t)
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))
