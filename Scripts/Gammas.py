@@ -17,54 +17,12 @@ Last Modification:
 """
 
 import numpy as np
- 
-def Mesh(x, y, L):
-    """
-    2D Mesh Gammas Computation.
-    
-    This function computes the Gamma values for logically rectangular meshes.
-    
-    Input:
-        x           m x n           Array           Array with the coordinates in x of the nodes.
-        y           m x n           Array           Array with the coordinates in y of the nodes.
-        L           5 x 1           Array           Array with the values of the differential operator.
-     
-    Output:
-        Gamma       m x n x 9       Array           Array with the computed gamma values.
-    """
-
-    # Variable initialization
-    m     = len(x[:,0])                                                             # The number of nodes in x.
-    n     = len(x[0,:])                                                             # The number of nodes in y.
-    Gamma = np.zeros([m,n,9])                                                       # Gamma initialization with zeros.
-
-    # Gammas computation
-    for i in np.arange(1,m-1):                                                      # For the inner nodes in x.
-        for j in np.arange(1,n-1):                                                  # For the inner nodes in y.
-            dx = []                                                                 # dx initialization with zeros.
-            dy = []                                                                 # dy initialization with zeros.
-            for l in np.arange(i-1,i+2):                                            # For all the neighbors in x.
-                for o in np.arange(j-1,j+2):                                        # For all the neighbors in y.
-                    if l == i and o == j:                                           # If it is the central node.
-                        pass                                                        # Do nothing.
-                    else:                                                           # If it is not the central node.
-                        dx.append(x[l,o] - x[i,j])                                  # Compute dx.
-                        dy.append(y[l,o] - y[i,j])                                  # Compute dy.
-            dx = np.array(dx)                                                       # Transform dx into an array.
-            dy = np.array(dy)                                                       # Transform dy into an array.
-            M = np.vstack([[dx], [dy], [dx**2], [dx*dy], [dy**2]])                  # M matrix is assembled.
-            M = np.linalg.pinv(M)                                                   # The pseudoinverse of matrix M.
-            YY = M@L                                                                # M*L computation.
-            Gem = np.vstack([-sum(YY), YY])                                         # Gamma values are found.
-            for k in np.arange(9):                                                  # For each of the Gamma values.
-                Gamma[i,j,k] = Gem[k]                                               # The Gamma value is stored.
-    return Gamma
 
 def Cloud(p, vec, L):
     """
     2D Clouds of Points Gammas Computation.
      
-    This function computes the Gamma values for clouds of points and triangulations and assemble the K matrix for the computations.
+    This function computes the Gamma values for clouds of points, and assemble the K matrix for the computations.
      
     Input:
         p           m x 3           Array           Array with the coordinates of the nodes and a flag for the boundary.
@@ -77,7 +35,7 @@ def Cloud(p, vec, L):
     # Variable initialization
     nvec  = len(vec[0,:])                                                           # The maximum number of neighbors.
     m     = len(p[:,0])                                                             # The total number of nodes.
-    K     = np.zeros([m,m])
+    K     = np.zeros([m,m])                                                         # K initialization with zeros.
     
     # Gammas computation and Matrix assembly
     for i in np.arange(m):                                                          # For each of the nodes.
@@ -102,3 +60,87 @@ def Cloud(p, vec, L):
             for j in np.arange(nvec):                                               # For each of the neighbor nodes.
                 K[i, vec[i,j]] = 0                                                  # Neighbor node weight is equal to 0.
     return K
+
+def Mesh(x, y, L):
+    """
+    2D Logically Rectangular Meshes Gammas Computation.
+     
+    This function computes the Gamma values for Logically Rectangular Meshes, and assemble the K matrix for the computations.
+     
+    Input:
+        x           m x n           Array           Array with the coordinates in x of the nodes.
+        y           m x n           Array           Array with the coordinates in y of the nodes.
+        L           5 x 1           Array           Array with the values of the differential operator.
+     
+     Output:
+        K           m x m           Array           K Matrix with the computed Gammas.
+    """
+    # Variable initialization
+    m  = len(x[:,0])                                                                # The number of nodes in x.
+    n  = len(x[0,:])                                                                # The number of nodes in y.
+    K  = np.zeros([(m)*(n), (m)*(n)])                                               # K initialization with zeros.
+
+    # Gammas computation and Matrix assembly
+    for i in np.arange(1,m-1):                                                      # For each of the inner nodes on x.
+        for j in np.arange(1,n-1):                                                  # For each of the inner nodes on y.
+            u  = np.array(x[i-1:i+2, j-1:j+2])                                      # u is formed with the x-coordinates of the stencil.
+            v  = np.array(y[i-1:i+2, j-1:j+2])                                      # v is formed with the y-coordinates of the stencil
+            dx = np.hstack([u[0,0] - u[1,1], u[1,0] - u[1,1], \
+                            u[2,0] - u[1,1], u[0,1] - u[1,1], \
+                            u[2,1] - u[1,1], u[0,2] - u[1,1], \
+                            u[1,2] - u[1,1], u[2,2] - u[1,1]])                      # dx computation.
+            dy = np.hstack([v[0,0] - v[1,1], v[1,0] - v[1,1], \
+                            v[2,0] - v[1,1], v[0,1] - v[1,1], \
+                            v[2,1] - v[1,1], v[0,2] - v[1,1], \
+                            v[1,2] - v[1,1], v[2,2] - v[1,1]])                      # dy computation
+            M  = np.vstack([[dx], [dy], [dx**2], [dx*dy], [dy**2]])                 # M matrix is assembled.
+            M  = np.linalg.pinv(M)                                                  # The pseudoinverse of matrix M.
+            YY = M@L                                                                # M*L computation.
+            Gamma = np.vstack([-sum(YY), YY])                                       # Gamma values are found.
+            p           = m*(j) + i                                                 # Variable to find the correct position in the Matrix.
+            K[p, p]     = Gamma[0]                                                  # Gamma 0 assignation
+            K[p, p-1-m] = Gamma[1]                                                  # Gamma 1 assignation
+            K[p, p-m]   = Gamma[2]                                                  # Gamma 2 assignation
+            K[p, p+1-m] = Gamma[3]                                                  # Gamma 3 assignation
+            K[p, p-1]   = Gamma[4]                                                  # Gamma 4 assignation
+            K[p, p+1]   = Gamma[5]                                                  # Gamma 5 assignation
+            K[p, p-1+m] = Gamma[6]                                                  # Gamma 6 assignation
+            K[p, p+m]   = Gamma[7]                                                  # Gamma 7 assignation
+            K[p, p+1+m] = Gamma[8]                                                  # Gamma 8 assignation
+    
+    for j in np.arange(n):                                                          # For all the nodes in y.
+        K[m*j, m*j] = 0                                                             # Zeros for the boundary nodes.
+    
+    for i in np.arange(1,m-1):                                                      # For all the nodes in x.
+        p = i+(n-1)*m                                                               # Indexes for the boundary nodes.
+        K[i, i] = 0                                                                 # Zeros for the boundary nodes.
+        K[p, p] = 0                                                                 # Zeros for the boundary nodes.
+    
+    return K
+
+def R(u, m , n, k):
+    """
+    2D Logically Rectangular Meshes Right Hand Side Computation
+     
+    This function computes the values of the RHS at each time level in the approximations for the Generalized Finite Difference Scheme.
+     
+    Input:
+        u           m x n x t       Array           Array with the computed solution.
+        m                           Integer         Number of nodes in x.
+        n                           Integer         Number of nodes in y.
+        k                           Integer         Current time step.
+     
+     Output:
+        R           (m x n)         Array           R Matrix with the Right Hand Side information.
+    """
+    R = np.zeros([m*n, 1])                                                          # K initialization with zeros.
+
+    for i in np.arange(1,m-1):                                                      # For all the inner nodes
+        R[i, 0]           = u[i, 0, k]   - u[i, 0, k-1]                             # Right hand side values.
+        R[i + (n-1)*m, 0] = u[i, n-1, k] - u[i, n-1, k-1]                           # Right hand side values.
+    
+    for j in np.arange(n):                                                          # For all the inner nodes.
+        R[(j)*m, 0]     = u[0,   j, k] - u[0, j, k-1]                               # Right hand side values.
+        R[m*(j+1)-1, 0] = u[m-1, j, k] - u[m-1, j, k-1]                             # Right hand side values.
+    
+    return R

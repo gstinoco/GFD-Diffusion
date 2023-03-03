@@ -32,10 +32,10 @@ def fDIF(x, y, t, v):
     return fun
 
 # Names of the regions
-regions = ['CAB','CUA','CUI','DOW','ENG','GIB','HAB','MIC','PAT','ZIR']
+regions = ['CAB']#,'CUA','CUI','DOW','ENG','GIB','HAB','MIC','PAT','ZIR']
 
 # Sizes of the clouds
-sizes = ['21', '41', '81']
+sizes = ['21']#, '41', '81']
 
 for reg in regions:
     regi = reg
@@ -65,8 +65,13 @@ for reg in regions:
 
         # Poisson 2D computed in a logically rectangular mesh
         u_ap, u_ex = Diffusion_2D.Mesh(x, y, fDIF, v, t)
-        er = Errors.Mesh_Transient(x, y, u_ap, u_ex)
+        er = Errors.Mesh(x, y, u_ap, u_ex)
         print('The maximum mean square error in the mesh', regi, 'with', mesh, 'points per side is: ', er.max())
-        Graph.Error_sav(er, nom)
-        Graph.Mesh_Transient_sav(x, y, u_ap, u_ex, nov)
-        Graph.Mesh_Static_sav(x, y, u_ap, u_ex, nop)
+
+        u_ap, u_ex = Diffusion_2D.Mesh(x, y, fDIF, v, t, implicit = True)
+        er = Errors.Mesh(x, y, u_ap, u_ex)
+        print('The maximum mean square error in the mesh', regi, 'with', mesh, 'points per side is: ', er.max())
+
+        #Graph.Error_sav(er, nom)
+        #Graph.Mesh_Transient_sav(x, y, u_ap, u_ex, nov)
+        #Graph.Mesh_Static_sav(x, y, u_ap, u_ex, nop)
