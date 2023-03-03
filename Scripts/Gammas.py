@@ -117,30 +117,3 @@ def Mesh(x, y, L):
         K[p, p] = 0                                                                 # Zeros for the boundary nodes.
     
     return K
-
-def R(u, m , n, k):
-    """
-    2D Logically Rectangular Meshes Right Hand Side Computation
-     
-    This function computes the values of the RHS at each time level in the approximations for the Generalized Finite Difference Scheme.
-     
-    Input:
-        u           m x n x t       Array           Array with the computed solution.
-        m                           Integer         Number of nodes in x.
-        n                           Integer         Number of nodes in y.
-        k                           Integer         Current time step.
-     
-     Output:
-        R           (m x n)         Array           R Matrix with the Right Hand Side information.
-    """
-    R = np.zeros([m*n, 1])                                                          # K initialization with zeros.
-
-    for i in np.arange(1,m-1):                                                      # For all the inner nodes
-        R[i, 0]           = u[i, 0, k]   - u[i, 0, k-1]                             # Right hand side values.
-        R[i + (n-1)*m, 0] = u[i, n-1, k] - u[i, n-1, k-1]                           # Right hand side values.
-    
-    for j in np.arange(n):                                                          # For all the inner nodes.
-        R[(j)*m, 0]     = u[0,   j, k] - u[0, j, k-1]                               # Right hand side values.
-        R[m*(j+1)-1, 0] = u[m-1, j, k] - u[m-1, j, k-1]                             # Right hand side values.
-    
-    return R

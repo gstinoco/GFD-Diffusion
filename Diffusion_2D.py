@@ -160,16 +160,15 @@ def Mesh(x, y, f, v, t, implicit = False, lam = 0.5):
 
     # A Generalized Finite Differences Method
     for k in np.arange(1,t):                                                        # For each time step.
-        R = Gammas.R(u_ap, m, n, k)                                                 # R Matrix is computed.
         for i in np.arange(m):                                                      # For each of the nodes on x.
             for j in np.arange(n):                                                  # For each of the nodes on y.
-                urr[i + j*m, 0] = u_ap[i, j, k-1]                                   # urr values' assignation.
-        
-        un = (K2@urr) + R                                                           # un is Kp*urr + R. 
+                urr[i + j*m, 0] = u_ap[i, j, k-1]                                   # urr as a row vector with all the solution.
+                
+        un = K2@urr                                                                 # New time level is computed.
 
         for i in np.arange(1,m-1):                                                  # For each of the interior nodes on x.
             for j in np.arange(1,n-1):                                              # For each of the interior nodes on y.
-                u_ap[i, j, k] = un[i + (j)*m]                                       # u_ap values' are assigned.
+                u_ap[i, j, k] = un[i + j*m]                                         # u_ap values are assigned.
 
     # Theoretical Solution
     for k in np.arange(t):                                                          # For all the time steps.
