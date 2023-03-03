@@ -1,49 +1,39 @@
-CAB:
-    The maximum mean square error in the triangulation CAB with size 1 is:  9.890521518849582e-06
-    The maximum mean square error in the triangulation CAB with size 2 is:  1.499643996285686e-06
-    The maximum mean square error in the triangulation CAB with size 3 is:  2.972775373598550e-07
+CAB size 1 . Implicit scheme:  2.0892774261696946e-04
+CAB size 2 . Implicit scheme:  4.5223149495052754e-05
+CAB size 3 . Implicit scheme:  8.8948755015012030e-06
 
-CUA:
-    The maximum mean square error in the triangulation CUA with size 1 is:  4.397702950365161e-05
-    The maximum mean square error in the triangulation CUA with size 2 is:  2.684992870072663e-06
-    The maximum mean square error in the triangulation CUA with size 3 is:  2.855810834362362e-07
+CUA size 1 . Implicit scheme:  5.2648087866756280e-04
+CUA size 2 . Implicit scheme:  1.0233103701953321e-04
+CUA size 3 . Implicit scheme:  2.0435865422005720e-05
 
-CUI:
-    The maximum mean square error in the triangulation CUI with size 1 is:  8.627708215115083e-05
-    The maximum mean square error in the triangulation CUI with size 2 is:  7.512310275208785e-06
-    The maximum mean square error in the triangulation CUI with size 3 is:  8.816997915821593e-07
+CUI size 1 . Implicit scheme:  3.3686628966561464e-04
+CUI size 2 . Implicit scheme:  6.1587357381522300e-05
+CUI size 3 . Implicit scheme:  1.1823598166753043e-05
 
-DOW:
-    The maximum mean square error in the triangulation DOW with size 1 is:  1.122067408983574e-05
-    The maximum mean square error in the triangulation DOW with size 2 is:  1.009407898693376e-06
-    The maximum mean square error in the triangulation DOW with size 3 is:  2.050780624777386e-07
+DOW size 1 . Implicit scheme:  2.5595416200177253e-04
+DOW size 2 . Implicit scheme:  4.7217182659593294e-05
+DOW size 3 . Implicit scheme:  9.4199649976229790e-06
 
-ENG:
-    The maximum mean square error in the triangulation ENG with size 1 is:  4.207480300078817e-05
-    The maximum mean square error in the triangulation ENG with size 2 is:  7.151904164323939e-06
-    The maximum mean square error in the triangulation ENG with size 3 is:  7.307418743014152e-07
+ENG size 1 . Implicit scheme:  4.0195309777915970e-04
+ENG size 2 . Implicit scheme:  1.0388427130184837e-04
+ENG size 3 . Implicit scheme:  2.1330101507390676e-05
 
-GIB:
-    The maximum mean square error in the triangulation GIB with size 1 is:  1.083670620284668e-04
-    The maximum mean square error in the triangulation GIB with size 2 is:  1.494331317636928e-05
-    The maximum mean square error in the triangulation GIB with size 3 is:  8.684706614740023e-07
+GIB size 1 . Implicit scheme:  5.1466107686064920e-04
+GIB size 2 . Implicit scheme:  1.0309961104704262e-04
+GIB size 3 . Implicit scheme:  1.9351782958691657e-05
 
-HAB:
-    The maximum mean square error in the triangulation HAB with size 1 is:  8.574616788077030e-05
-    The maximum mean square error in the triangulation HAB with size 2 is:  1.317711471170802e-05
-    The maximum mean square error in the triangulation HAB with size 3 is:  1.461919368330043e-06
+HAB size 1 . Implicit scheme:  3.4268132784523450e-04
+HAB size 2 . Implicit scheme:  7.9827175517358140e-05
+HAB size 3 . Implicit scheme:  1.6953083434355350e-05
 
-MIC:
-    The maximum mean square error in the triangulation MIC with size 1 is:  1.646161513432203e-04
-    The maximum mean square error in the triangulation MIC with size 2 is:  2.712129835978103e-05
-    The maximum mean square error in the triangulation MIC with size 3 is:  3.731217814654433e-06
+MIC size 1 . Implicit scheme:  3.3236916660841780e-04
+MIC size 2 . Implicit scheme:  7.5735099874196330e-05
+MIC size 3 . Implicit scheme:  1.5247315994156265e-05
 
-PAT:
-    The maximum mean square error in the triangulation PAT with size 1 is:  5.719873481488073e-05
-    The maximum mean square error in the triangulation PAT with size 2 is:  8.933892775049030e-06
-    The maximum mean square error in the triangulation PAT with size 3 is:  1.043815392924967e-06
+PAT size 1 . Implicit scheme:  2.9393260530590783e-04
+PAT size 2 . Implicit scheme:  6.8047315391119710e-05
+PAT size 3 . Implicit scheme:  1.3417776702588866e-05
 
-ZIR:
-    The maximum mean square error in the triangulation ZIR with size 1 is:  5.506557484314853e-05
-    The maximum mean square error in the triangulation ZIR with size 2 is:  7.080257784766090e-06
-    The maximum mean square error in the triangulation ZIR with size 3 is:  7.143260943648370e-07
+ZIR size 1 . Implicit scheme:  3.2666798978749653e-04
+ZIR size 2 . Implicit scheme:  7.33542295845837e00-05
+ZIR size 3 . Implicit scheme:  1.472325474859242e0-05
