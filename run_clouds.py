@@ -69,7 +69,7 @@ for reg in regions:
 
         # Error computation
         er = Errors.Cloud(p, vec, u_ap, u_ex)
-        print(regi,'_',cloud, '. Explicit scheme: ', er.max())
+        print(regi, 'size' ,cloud, '. Explicit scheme: ', er.max())
 
         # Results
         nom = 'Results/Clouds/Explicit/QME/' + regi + '_' + cloud + '.png'
@@ -109,7 +109,7 @@ for reg in regions:
 
         # Error computation
         er = Errors.Cloud(p, vec, u_ap, u_ex)
-        print(regi,'_',cloud, '. Implicit scheme: ', er.max())
+        print(regi, 'size', cloud, '. Implicit scheme: ', er.max())
 
         # Results
         nom = 'Results/Clouds/Implicit/QME/' + regi + '_' + cloud + '.png'
