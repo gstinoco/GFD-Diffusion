@@ -83,7 +83,7 @@ def Cloud(p, f, v, t, triangulation = False, tt = [], implicit = False, lam = 0.
     ## Explicit Scheme
     if implicit == False:                                                           # For the explicit scheme.
         for k in np.arange(1,t):                                                    # For each of the time steps.
-            un = u_ap[:,k-1] + (K@u_ap[:,k-1])                                      # The new time-level is computed.
+            un = (np.identity(m) + K)@u_ap[:,k-1]                                   # The new time-level is computed.
             for i in np.arange(m):                                                  # For all the nodes.
                 if p[i,2] == 0:                                                     # If the node is an inner node.
                     u_ap[i,k] = un[i]                                               # Save the computed solution.
