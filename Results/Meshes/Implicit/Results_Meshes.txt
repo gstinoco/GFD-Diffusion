@@ -1,30 +1,39 @@
-The maximum mean square error in the mesh CAB with 21 points per side is:  1.6020163140776527e-04
-The maximum mean square error in the mesh CAB with 41 points per side is:  3.7792386283813835e-05
-The maximum mean square error in the mesh CAB with 81 points per side is:  8.2301667603231480e-06
-The maximum mean square error in the mesh CUA with 21 points per side is:  7.7959136649163520e-04
-The maximum mean square error in the mesh CUA with 41 points per side is:  1.8246848985864955e-04
-The maximum mean square error in the mesh CUA with 81 points per side is:  3.9762786467461004e-05
-The maximum mean square error in the mesh CUI with 21 points per side is:  3.9646027928991120e-04
-The maximum mean square error in the mesh CUI with 41 points per side is:  9.2470627940654510e-05
-The maximum mean square error in the mesh CUI with 81 points per side is:  nan
-The maximum mean square error in the mesh DOW with 21 points per side is:  4.2326363193313700e-04
-The maximum mean square error in the mesh DOW with 41 points per side is:  1.1003416559471184e-04
-The maximum mean square error in the mesh DOW with 81 points per side is:  nan
-The maximum mean square error in the mesh ENG with 21 points per side is:  inf
-The maximum mean square error in the mesh ENG with 41 points per side is:  nan
-The maximum mean square error in the mesh ENG with 81 points per side is:  nan
-The maximum mean square error in the mesh GIB with 21 points per side is:  1.6911833357740470e-03
-The maximum mean square error in the mesh GIB with 41 points per side is:  nan
-The maximum mean square error in the mesh GIB with 81 points per side is:  nan
-The maximum mean square error in the mesh HAB with 21 points per side is:  1.3870163701237241
-The maximum mean square error in the mesh HAB with 41 points per side is:  nan
-The maximum mean square error in the mesh HAB with 81 points per side is:  nan
-The maximum mean square error in the mesh MIC with 21 points per side is:  2.6341115643916280e-03
-The maximum mean square error in the mesh MIC with 41 points per side is:  nan
-The maximum mean square error in the mesh MIC with 81 points per side is:  nan
-The maximum mean square error in the mesh PAT with 21 points per side is:  1.3253510565821932e+50
-The maximum mean square error in the mesh PAT with 41 points per side is:  nan
-The maximum mean square error in the mesh PAT with 81 points per side is:  nan
-The maximum mean square error in the mesh ZIR with 21 points per side is:  3.7280718810785114e-04
-The maximum mean square error in the mesh ZIR with 41 points per side is:  9.0195522037373930e-05
-The maximum mean square error in the mesh ZIR with 81 points per side is:  nan
+CAB size 21 . Implicit scheme:  6.6984139094331470e-04
+CAB size 41 . Implicit scheme:  1.7624592018184420e-04
+CAB size 81 . Implicit scheme:  4.5141953082754040e-05
+
+CUA size 21 . Implicit scheme:  1.7091767285690711e-03
+CUA size 41 . Implicit scheme:  4.4167569389376893e-04
+CUA size 81 . Implicit scheme:  1.1212542170969523e-04
+
+CUI size 21 . Implicit scheme:  8.8407230965190670e-04
+CUI size 41 . Implicit scheme:  2.2653662571770000e-04
+CUI size 81 . Implicit scheme:  5.7261942247004494e-05
+
+DOW size 21 . Implicit scheme:  6.1060324421857240e-04
+DOW size 41 . Implicit scheme:  1.6086565124407996e-04
+DOW size 81 . Implicit scheme:  4.1364343073894940e-05
+
+ENG size 21 . Implicit scheme:  inf
+ENG size 41 . Implicit scheme:  nan
+ENG size 81 . Implicit scheme:  8.0446162101344970e-05
+
+GIB size 21 . Implicit scheme:  1.6096757319502002e-03
+GIB size 41 . Implicit scheme:  2.7951186199987185e-04
+GIB size 81 . Implicit scheme:  7.1780245271025140e-05
+
+HAB size 21 . Implicit scheme:  1.4968039325269220e-00
+HAB size 41 . Implicit scheme:  4.2308524307414770e-04
+HAB size 81 . Implicit scheme:  1.0786507845681597e-04
+
+MIC size 21 . Implicit scheme:  2.6547422207629230e-03
+MIC size 41 . Implicit scheme:  8.4553816201240290e-04
+MIC size 81 . Implicit scheme:  2.3062626635695464e-04
+
+PAT size 21 . Implicit scheme:  1.4618907788839456e-03
+PAT size 41 . Implicit scheme:  3.0644726636028260e-04
+PAT size 81 . Implicit scheme:  7.9254318166933630e-05
+
+ZIR size 21 . Implicit scheme:  7.8722891895893540e-04
+ZIR size 41 . Implicit scheme:  2.1006063818050026e-04
+ZIR size 81 . Implicit scheme:  5.3723973855643630e-05
