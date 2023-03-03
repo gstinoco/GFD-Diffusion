@@ -32,10 +32,10 @@ def fDIF(x, y, t, v):
     return fun
 
 # Names of the regions
-regions = ['CAB']#,'CUA','CUI','DOW','ENG','GIB','HAB','MIC','PAT','ZIR']
+regions = ['CAB','CUA','CUI','DOW','ENG','GIB','HAB','MIC','PAT','ZIR']
 
 # Sizes of the clouds
-sizes = ['21']#, '41', '81']
+sizes = ['21', '41', '81']
 
 for reg in regions:
     regi = reg
@@ -55,9 +55,9 @@ for reg in regions:
 
         # All data is loaded from the file
         mat = loadmat('Data/Meshes/' + regi + '_' + mesh + '.mat')
-        nom = 'Results/Meshes/QME/' + regi + '_' + mesh + '.png'
-        nov = 'Results/Meshes/Videos/' + regi + '_' + mesh + '.mp4'
-        nop = 'Results/Meshes/Steps/' + regi + '_' + mesh + '_'
+        nom = 'Results/Meshes/Explicit/QME/' + regi + '_' + mesh + '.png'
+        nov = 'Results/Meshes/Explicit/Videos/' + regi + '_' + mesh + '.mp4'
+        nop = 'Results/Meshes/Explicit/Steps/' + regi + '_' + mesh + '_'
 
         # Node data is saved
         x  = mat['x']
@@ -66,12 +66,41 @@ for reg in regions:
         # Poisson 2D computed in a logically rectangular mesh
         u_ap, u_ex = Diffusion_2D.Mesh(x, y, fDIF, v, t)
         er = Errors.Mesh(x, y, u_ap, u_ex)
-        print('The maximum mean square error in the mesh', regi, 'with', mesh, 'points per side is: ', er.max())
+        print('The maximum mean square error in the mesh', regi, 'with', mesh, 'points per side, with the implicit scheme is: ', er.max())
+        Graph.Error_sav(er, nom)
+        Graph.Mesh_Transient_sav(x, y, u_ap, u_ex, nov)
+        Graph.Mesh_Static_sav(x, y, u_ap, u_ex, nop)
 
-        u_ap, u_ex = Diffusion_2D.Mesh(x, y, fDIF, v, t, implicit = True)
-        er = Errors.Mesh(x, y, u_ap, u_ex)
-        print('The maximum mean square error in the mesh', regi, 'with', mesh, 'points per side is: ', er.max())
+for reg in regions:
+    regi = reg
 
-        #Graph.Error_sav(er, nom)
-        #Graph.Mesh_Transient_sav(x, y, u_ap, u_ex, nov)
-        #Graph.Mesh_Static_sav(x, y, u_ap, u_ex, nop)
+    for me in sizes:
+        mesh = me
+
+        # Number of Time Steps
+        if mesh == '21':
+            t = 5000
+        elif mesh == '41':
+            t = 10000
+        elif mesh == '81':
+            t = 20000
+        else:
+            t = 10000
+
+        # All data is loaded from the file
+        mat = loadmat('Data/Meshes/' + regi + '_' + mesh + '.mat')
+        nom = 'Results/Meshes/Implicit/QME/' + regi + '_' + mesh + '.png'
+        nov = 'Results/Meshes/Implicit/Videos/' + regi + '_' + mesh + '.mp4'
+        nop = 'Results/Meshes/Implicit/Steps/' + regi + '_' + mesh + '_'
+
+        # Node data is saved
+        x  = mat['x']
+        y  = mat['y']
+
+        # Poisson 2D computed in a logically rectangular mesh
+        u_ap, u_ex = Diffusion_2D.Mesh(x, y, fDIF, v, t)
+        er = Errors.Mesh(x, y, u_ap, u_ex, implicit = True)
+        print('The maximum mean square error in the mesh', regi, 'with', mesh, 'points per side, with the implicit scheme is: ', er.max())
+        Graph.Error_sav(er, nom)
+        Graph.Mesh_Transient_sav(x, y, u_ap, u_ex, nov)
+        Graph.Mesh_Static_sav(x, y, u_ap, u_ex, nop)
