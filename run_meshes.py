@@ -66,7 +66,7 @@ for reg in regions:
         # Poisson 2D computed in a logically rectangular mesh
         u_ap, u_ex = Diffusion_2D.Mesh(x, y, fDIF, v, t)
         er = Errors.Mesh(x, y, u_ap, u_ex)
-        print('The maximum mean square error in the mesh', regi, 'with', mesh, 'points per side, with the explicit scheme is: ', er.max())
+        print(regi, 'size', mesh, '. Explicit scheme: ', er.max())
         Graph.Error_sav(er, nom)
         Graph.Mesh_Transient_sav(x, y, u_ap, u_ex, nov)
         Graph.Mesh_Static_sav(x, y, u_ap, u_ex, nop)
@@ -100,7 +100,7 @@ for reg in regions:
         # Poisson 2D computed in a logically rectangular mesh
         u_ap, u_ex = Diffusion_2D.Mesh(x, y, fDIF, v, t)
         er = Errors.Mesh(x, y, u_ap, u_ex, implicit = True)
-        print('The maximum mean square error in the mesh', regi, 'with', mesh, 'points per side, with the implicit scheme is: ', er.max())
+        print(regi, 'size' ,mesh, '. Implicit scheme: ', er.max())
         Graph.Error_sav(er, nom)
         Graph.Mesh_Transient_sav(x, y, u_ap, u_ex, nov)
         Graph.Mesh_Static_sav(x, y, u_ap, u_ex, nop)
