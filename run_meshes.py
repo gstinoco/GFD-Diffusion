@@ -35,7 +35,7 @@ def fDIF(x, y, t, v):
 regions = ['CAB','CUA','CUI','DOW','ENG','GIB','HAB','MIC','PAT','ZIR']
 
 # Sizes of the clouds
-sizes = ['21', '41', '81']
+sizes = ['1', '2', '3']
 
 for reg in regions:
     regi = reg
@@ -44,11 +44,11 @@ for reg in regions:
         mesh = me
 
         # Number of Time Steps
-        if mesh == '21':
+        if mesh == '1':
             t = 1000
-        elif mesh == '41':
+        elif mesh == '2':
             t = 4000
-        elif mesh == '81':
+        elif mesh == '3':
             t = 16000
         else:
             t = 32000
@@ -78,11 +78,11 @@ for reg in regions:
         mesh = me
 
         # Number of Time Steps
-        if mesh == '21':
+        if mesh == '1':
             t = 1000
-        elif mesh == '41':
+        elif mesh == '2':
             t = 4000
-        elif mesh == '81':
+        elif mesh == '3':
             t = 16000
         else:
             t = 320000
