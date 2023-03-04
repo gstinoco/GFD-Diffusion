@@ -3,7 +3,7 @@ Generalized Finite Differences Methods for numerically solve Diffusion Equation 
 
 All the codes are distributed under MIT License on [GitHub](https://github.com/gstinoco/GFD-Diffusion) and are free to use, modify, and distribute giving the proper copyright notice.
 
-![Approximate and Theoretical solutions of the problem on ENG region](/Results/Clouds/Explicit/Steps/MIC_3_05.png)
+![Approximate and Theoretical solutions of the problem on ZIR region](/Results/Clouds/Explicit/Steps/ZIR_2_05.png)
 
 ## Description :memo:
 This repository proposes a way to make an approximation to Diffusion Equation in two dimensions over regions that can range from regular (CUA) to highly irregular (ENG).
