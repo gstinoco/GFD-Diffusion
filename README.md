@@ -3,7 +3,7 @@ Generalized Finite Differences Methods for numerically solve Diffusion Equation 
 
 All the codes are distributed under MIT License on [GitHub](https://github.com/gstinoco/GFD-Diffusion) and are free to use, modify, and distribute giving the proper copyright notice.
 
-![Approximate and Theoretical solutions of the problem on ENG region](/Results/Clouds/ENG_3.png)
+![Approximate and Theoretical solutions of the problem on ENG region](/Results/Clouds/Explicit/Steps/MIC_3_05.png)
 
 ## Description :memo:
 This repository proposes a way to make an approximation to Diffusion Equation in two dimensions over regions that can range from regular (CUA) to highly irregular (ENG).
@@ -13,10 +13,10 @@ For this, the proposed solution uses a Generalized Finite Differences Method for
 2. Triangulations.
 3. Unstructured clouds of points.
 
-Cuitzeo Lake Region                                           | Cuitzeo Lake Structured Grid
+Michoacan Region                                              | Michoacan Structured Grid
 :------------------------------------------------------------:|:------------------------------------------------------------:
 ![Cuitzeo Lake Region](/Notebook_Figures/fig01.png)           | ![Cuitzeo Lake Structured Grid](/Notebook_Figures/fig02.png)
-Cuitzeo Lake Triangulation                                    | Cuitzeo Lake Cloud of Points
+Michoacan Triangulation                                       | Michoacan Cloud of Points
 ![Cuitzeo Lake Triangulation](/Notebook_Figures/fig03.png)    | ![Cuitzeo Lake Cloud of Points](/Notebook_Figures/fig04.png)
 
 
