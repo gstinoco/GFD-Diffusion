@@ -16,7 +16,7 @@ For this, the proposed solution uses a Generalized Finite Differences Method for
 Zirahuen Structured Grid                                      | Zirahuen Triangulation
 :------------------------------------------------------------:|:------------------------------------------------------------:
 ![Zirahuen Lake Region](/Data/Meshes/ZIR_2.png)               | ![Zirahuen Lake Triangulation](/Data/Clouds/ZIR_2_Tri.png)
-Zirahuen Cloud of Points                                      | Zirahuen Cloud of Points With Hples
+Zirahuen Cloud of Points                                      | Zirahuen Cloud of Points With Holes
 ![Zirahuen Lake Cloud of Points](/Data/Clouds/ZIR_2.png)      | ![Zirahuen Lake Cloud of Points](/Data/Holes/ZIR_2.png)
 
 
