@@ -13,11 +13,11 @@ For this, the proposed solution uses a Generalized Finite Differences Method for
 2. Triangulations.
 3. Unstructured clouds of points.
 
-Michoacan Region                                              | Michoacan Structured Grid
+Zirahuen Structured Grid                                      | Zirahuen Triangulation
 :------------------------------------------------------------:|:------------------------------------------------------------:
-![Cuitzeo Lake Region](/Notebook_Figures/fig01.png)           | ![Cuitzeo Lake Structured Grid](/Notebook_Figures/fig02.png)
-Michoacan Triangulation                                       | Michoacan Cloud of Points
-![Cuitzeo Lake Triangulation](/Notebook_Figures/fig03.png)    | ![Cuitzeo Lake Cloud of Points](/Notebook_Figures/fig04.png)
+![Zirahuen Lake Region](/Data/Meshes/ZIR_3.png)               | ![Zirahuen Lake Triangulation](/Data/Clouds/ZIR_3_Tri.png)
+Zirahuen Cloud of Points                                      | Zirahuen Cloud of Points With Hples
+![Zirahuen Lake Cloud of Points](/Data/Clouds/ZIR_3.png)      | ![Zirahuen Lake Cloud of Points](/Data/Holes/ZIR_3.png)
 
 
 It is possible to find all test data in the "Data" folder and some sample results in the "Results" folder.
