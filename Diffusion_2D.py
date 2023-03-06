@@ -22,9 +22,9 @@ import Scripts.Neighbors as Neighbors
 
 def Cloud(p, f, v, t, triangulation = False, tt = [], implicit = False, lam = 0.5):
     """
-    2D Diffusion Equation implemented in Unstructured Clouds of Points.
+    2D Diffusion Equation implemented on Unstructured Clouds of Points.
     
-    This routine calculates an approximation to the solution of Diffusion equation in 2D using a Generalized Finite Differences scheme on unstructured clouds of points.
+    This function calculates an approximation to the solution of Diffusion equation in 2D using a Generalized Finite Differences scheme on unstructured clouds of points.
     
     The problem to solve is:
     
@@ -35,7 +35,7 @@ def Cloud(p, f, v, t, triangulation = False, tt = [], implicit = False, lam = 0.
         f                           Function        Function declared with the boundary condition.
         v                           Real            Diffusion coefficient.
         t                           Integer         Number of time steps to be considered.
-        triang                      Logical         Select whether or not there is a triangulation available.
+        triangulation               Logical         Select whether or not there is a triangulation available.
                                                         True: Triangulation available.
                                                         False: No triangulation available (Default)
         tt          m x 3           Array           Array with the triangulation indexes.
