@@ -18,6 +18,7 @@ Last Modification:
 
 import numpy as np
 from scipy.io import loadmat
+from scipy.io import savemat
 import Scripts.Errors as Errors
 import Scripts.Graph as Graph
 import Diffusion_2D
@@ -75,9 +76,13 @@ for reg in regions:
         nom = 'Results/Clouds/Explicit/QME/' + regi + '_' + cloud + '.png'
         nov = 'Results/Clouds/Explicit/Videos/' + regi + '_' + cloud + '.mp4'
         nop = 'Results/Clouds/Explicit/Steps/' + regi + '_' + cloud + '_'
+        nol = 'Results/Clouds/Explicit/' + regi + '_' + cloud + '.mat'
         Graph.Error_sav(er,nom)
         Graph.Cloud_Transient_sav(p, tt, u_ap, u_ex, nov)
         Graph.Cloud_Static_sav(p, tt, u_ap, u_ex, nop)
+        
+        mdic = {'u_ap': u_ap, 'u_ex': u_ex, 'p': p, 'tt': tt}
+        savemat(nol, mdic)
     
 for reg in regions:
     regi = reg
@@ -115,6 +120,9 @@ for reg in regions:
         nom = 'Results/Clouds/Implicit/QME/' + regi + '_' + cloud + '.png'
         nov = 'Results/Clouds/Implicit/Videos/' + regi + '_' + cloud + '.mp4'
         nop = 'Results/Clouds/Implicit/Steps/' + regi + '_' + cloud + '_'
+        nol = 'Results/Clouds/Implicit/' + regi + '_' + cloud + '.mat'
         Graph.Error_sav(er,nom)
         Graph.Cloud_Transient_sav(p, tt, u_ap, u_ex, nov)
         Graph.Cloud_Static_sav(p, tt, u_ap, u_ex, nop)
+        mdic = {'u_ap': u_ap, 'u_ex': u_ex, 'p': p, 'tt': tt}
+        savemat(nol, mdic)
